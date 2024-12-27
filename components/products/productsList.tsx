@@ -59,7 +59,7 @@ export default function ProductList({ products }: { products: Product[] }) {
 
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Ventas</span>
-                  <span className="font-medium">{product.precio.toFixed(0)}</span>
+                  <span className="font-medium">{product.precio}</span>
                 </div>
 
                 <div className="flex flex-row gap-2">
@@ -79,7 +79,7 @@ export default function ProductList({ products }: { products: Product[] }) {
                   <span className="text-[22px] text-black text-muted-foreground">
                     S/
                   </span>
-                  <span>{product.precio.toFixed(0)}</span>
+                  <span>{product.precio}</span>
                 </div>
               </div>
             </div>
