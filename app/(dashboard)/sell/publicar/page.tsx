@@ -1,108 +1,198 @@
-"use client";
+'use client'
 
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import React from 'react'
+import { X } from 'lucide-react'
+import Link from 'next/link'
+import { z } from 'zod'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { createProduct } from '@/actions/products'
 
-import React from 'react';
-import { Camera, X } from 'lucide-react';
-import Link from 'next/link';
+const productSchema = z.object({
+  img: z.string().url(),
+  nombre: z.string().min(1, "El nombre es requerido"),
+  precio: z.number().positive("El precio debe ser positivo"),
+  categoria: z.string().min(1, "La categoría es requerida"),
+  descripcion: z.string().min(1, "La descripción es requerida"),
+  unidades: z.number().int().positive("Las unidades deben ser un número positivo"),
+  color: z.string().min(1, "El color es requerido"),
+})
+
+type ProductFormValues = z.infer<typeof productSchema>
 
 export default function Page() {
+  const router = useRouter()
+
+  const form = useForm<ProductFormValues>({
+    resolver: zodResolver(productSchema),
+    defaultValues: {
+      img: '',
+      nombre: '',
+      precio: 0,
+      categoria: '',
+      descripcion: '',
+      unidades: 0,
+      color: '',
+    },
+  })
+
+  async function onSubmit(values: ProductFormValues) {
+    try {
+      const formData = new FormData();
+      Object.entries(values).forEach(([key, value]) => {
+        formData.append(key, value.toString());
+      });
+      console.log(formData)
+      const response = await createProduct(formData);
+      console.log(response)
+      console.log(values)
+      toast.success("Producto creado correctamente")
+      router.push("/sell")
+    } catch (error) {
+      toast.error("Error al subir producto")
+    }
+  }
+
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Publicar aviso</h2>
         <Link href={"/sell"}>
-          <button className="text-muted-foreground">
-          <X className="w-5 h-5" />
-        </button>
+          <Button variant="ghost" size="icon">
+            <X className="w-5 h-5" />
+          </Button>
         </Link>
-      
       </div>
 
-      {/* Agregar fotos */}
-      <div className="flex flex-col items-center justify-center border border-dashed border-gray-300 rounded-lg h-32">
-        <Camera className="w-8 h-8 text-gray-400" />
-        <button className="text-sm text-gray-500">Agregar fotos</button>
-      </div>
-
-      {/* Formulario */}
-      <form className="space-y-4">
-        {/* Nombre del producto */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Nombre producto</label>
-          <input
-            type="text"
-            placeholder="Producto o Servicio"
-            className="w-full mt-1 px-4 py-2 border rounded-lg text-sm text-gray-900 focus:ring focus:ring-green-500 focus:outline-none"
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="img"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>URL de la imagen</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://ejemplo.com/imagen.jpg" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
 
-        {/* Precio */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Precio</label>
-          <input
-            type="text"
-            placeholder="S/ 0.00"
-            className="w-full mt-1 px-4 py-2 border rounded-lg text-sm text-gray-900 focus:ring focus:ring-green-500 focus:outline-none"
+          <FormField
+            control={form.control}
+            name="nombre"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nombre producto</FormLabel>
+                <FormControl>
+                  <Input placeholder="Producto o Servicio" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
 
-        {/* Categoría */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Categoría</label>
-          <select
-            className="w-full mt-1 px-2 py-2 border rounded-lg text-sm text-gray-900 focus:ring focus:ring-green-500 focus:outline-none"
-          >
-            <option value="camisas">Camisas</option>
-            <option value="pantalones">Pantalones</option>
-            <option value="zapatos">Zapatos</option>
-          </select>
-        </div>
-
-        {/* Descripción */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Descripción</label>
-          <textarea
-            placeholder="Describe tu producto"
-            className="w-full mt-1 px-2 py-2 border rounded-lg text-sm text-gray-900 focus:ring focus:ring-green-500 focus:outline-none"
-          ></textarea>
-        </div>
-
-        {/* Unidades máximas */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Unidades máximas</label>
-          <input
-            type="text"
-            placeholder="200 UN"
-            className="w-full mt-1 px-2 py-2 border rounded-lg text-sm text-gray-900 focus:ring focus:ring-green-500 focus:outline-none"
+          <FormField
+            control={form.control}
+            name="precio"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Precio</FormLabel>
+                <FormControl>
+                  <Input type="number" step="0.01" placeholder="S/ 0.00" {...field} onChange={(e) => field.onChange(parseFloat(e.target.value))} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
 
-        {/* Colores disponibles */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Colores disponibles</label>
-          <select
-            className="w-full mt-1 px-2 py-2 border rounded-lg text-sm text-gray-900 focus:ring focus:ring-green-500 focus:outline-none"
-          >
-            <option value="blanco">Blanco</option>
-            <option value="negro">Negro</option>
-            <option value="azul">Azul</option>
-          </select>
-        </div>
+          <FormField
+            control={form.control}
+            name="categoria"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Categoría</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecciona una categoría" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="camisas">Camisas</SelectItem>
+                    <SelectItem value="pantalones">Pantalones</SelectItem>
+                    <SelectItem value="zapatos">Zapatos</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        {/* Botón Publicar */}
-        <div>
-          <button
-            type="submit"
-            className="w-full py-3 bg-gray-300 text-white font-semibold rounded-lg focus:ring focus:ring-green-500 focus:outline-none"
-            disabled
-          >
-            Publicar
-          </button>
-        </div>
-      </form>
+          <FormField
+            control={form.control}
+            name="descripcion"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Descripción</FormLabel>
+                <FormControl>
+                  <Textarea placeholder="Describe tu producto" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="unidades"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Unidades máximas</FormLabel>
+                <FormControl>
+                  <Input type="number" placeholder="200" {...field} onChange={(e) => field.onChange(parseInt(e.target.value, 10))} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="color"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Colores disponibles</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecciona un color" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="blanco">Blanco</SelectItem>
+                    <SelectItem value="negro">Negro</SelectItem>
+                    <SelectItem value="azul">Azul</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button type="submit" className="w-full">Publicar</Button>
+        </form>
+      </Form>
     </div>
-  );
-};
-
+  )
+}
 
