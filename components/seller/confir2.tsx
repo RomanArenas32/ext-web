@@ -2,15 +2,19 @@
 
 import { ChevronLeft, MessageSquareMore, AlertTriangle, ClipboardCheck } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 export default function Confirm2() {
   return (
-    <div className="bg-gray-50 min-h-screen flex justify-center py-8">
-      <div className="bg-white w-full max-w-md rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-gray-50 min-h-screen flex justify-center">
+      <div className="bg-white w-full max-w-md  overflow-hidden shadow-lg">
         {/* Header */}
         <div className="bg-green-800 text-white p-6 flex items-center justify-between relative">
-          <button className="absolute left-4">
+          <Link href="/products">
+           <button className="absolute left-4">
             <ChevronLeft className="text-white w-6 h-6" />
           </button>
+          </Link>
+         
           <h1 className="text-lg font-bold pl-[130px]">Confirmación</h1>
         </div>
 
@@ -28,14 +32,17 @@ export default function Confirm2() {
             <p className="text-green-700 font-semibold">Negocio 1 <span className="text-green-500">✔</span></p>
             <p className="text-sm text-gray-700">Contacto: Tucto Gladys Karol</p>
           </div>
-          <div className="relative inline-block">
-            <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
-              Chat <MessageSquareMore className="w-4 h-4 ml-2" />
-            </button>
-            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-              1
-            </span>
-          </div>
+          <Link href="/confirmacion/chat">
+            <div className="relative inline-block">
+              <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
+                Chat <MessageSquareMore className="w-4 h-4 ml-2" />
+              </button>
+              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                1
+              </span>
+            </div>
+          </Link>
+
         </div>
         {/* Product Details */}
         <div className="px-6 py-4">
@@ -72,11 +79,14 @@ export default function Confirm2() {
           >
             Producto recibido
           </button>
-          <button
-            className="bg-gray-200 text-blck py-2 px-4 rounded-3xl text-center font-medium"
+          <Link href={`/products`}>
+           <button
+            className="bg-gray-200 text-blck py-2 px-4 rounded-3xl text-center font-medium min-w-full"
           >
             Cancelar
           </button>
+          </Link>
+         
         </div>
       </div>
     </div>

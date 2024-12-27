@@ -8,11 +8,11 @@ export default function NavigationFooter() {
     <CardFooter className=" gap-2 p-4 border-t bg-[#F7F7F7] rounded-3xl my-2 mx-4 w-[375px] h-[64px] flex flex-row items-center justify-around">
      
      <Link 
-        href="/"
+        href="/products"
         className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
       >
         <User className="h-6 w-6" />
-        <span className="text-xs">Inicio</span>
+        <span className="text-xs">Comprar</span>
       </Link>
       <Link 
         href="/sell"

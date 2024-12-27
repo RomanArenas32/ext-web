@@ -1,7 +1,7 @@
 "use client"
 
 
-import ChatDetail from "@/components/chat/chatbox"
+import Confirm2 from "@/components/seller/confir2"
 
 
 export default function Page() {
@@ -9,7 +9,7 @@ export default function Page() {
     return (
 
         <div >
-            <ChatDetail />
+            <Confirm2 />
         </div>
     )
 }
