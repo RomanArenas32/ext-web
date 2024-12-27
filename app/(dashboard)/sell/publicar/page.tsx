@@ -51,9 +51,9 @@ export default function Page() {
       });
       console.log(formData)
       const response = await createProduct(formData);
-      console.log(response)
-      console.log(values)
-      toast.success("Producto creado correctamente")
+      if(response.success){
+        toast.success("Producto creado correctamente")
+      }
       router.push("/sell")
     } catch (error) {
       toast.error("Error al subir producto")
@@ -108,7 +108,25 @@ export default function Page() {
               <FormItem>
                 <FormLabel>Precio</FormLabel>
                 <FormControl>
-                  <Input type="number" step="0.01" placeholder="S/ 0.00" {...field} onChange={(e) => field.onChange(parseFloat(e.target.value))} />
+                <Input
+                    type="number"
+                    placeholder="200"
+                    {...field}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
+                    onFocus={(e) => {
+                      // Borra el valor "0" cuando el input obtiene el foco
+                      if (e.target.value === "0") {
+                        e.target.value = "";
+                      }
+                    }}
+                    onBlur={(e) => {
+                      // Si el campo está vacío, restablece el valor a "0"
+                      if (e.target.value === "") {
+                        e.target.value = "0";
+                        field.onChange(0); // Asegúrate de actualizar el campo de formulario también
+                      }
+                    }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -159,12 +177,31 @@ export default function Page() {
               <FormItem>
                 <FormLabel>Unidades máximas</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="200" {...field} onChange={(e) => field.onChange(parseInt(e.target.value, 10))} />
+                  <Input
+                    type="number"
+                    placeholder="200"
+                    {...field}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
+                    onFocus={(e) => {
+                      // Borra el valor "0" cuando el input obtiene el foco
+                      if (e.target.value === "0") {
+                        e.target.value = "";
+                      }
+                    }}
+                    onBlur={(e) => {
+                      // Si el campo está vacío, restablece el valor a "0"
+                      if (e.target.value === "") {
+                        e.target.value = "0";
+                        field.onChange(0); // Asegúrate de actualizar el campo de formulario también
+                      }
+                    }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
 
           <FormField
             control={form.control}

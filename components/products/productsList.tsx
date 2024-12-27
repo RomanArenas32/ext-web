@@ -1,55 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 
-interface Product {
-  storeName: string;
-  sales: number;
-  rating: number;
-  price: number;
-  stock: number;
-  deliveryTime: string;
-  productImage: string;
+export interface Product {
+  _id: string;          
+  __v: number;          
+  color: string;       
+  descripcion: string;   
+  img: string;           
+  nombre: string;         
+  precio: number;     
+  unidades: number;      
 }
 
-const products: Product[] = [
-  {
-    storeName: "KellyFashion",
 
-    sales: 72,
-    rating: 76.0,
-    price: 3.4,
-    stock: 40,
-    deliveryTime: "24hrs",
-    productImage: "/img/camisero.jpg",
-  },
-  {
-    storeName: "Mc-Store",
-    sales: 115,
-    rating: 98.0,
-    price: 3.8,
-    stock: 90,
-    deliveryTime: "24hrs",
-    productImage: "/img/camisero.jpg",
-  },
-  {
-    storeName: "MerxClothing",
 
-    sales: 330,
-    rating: 92.0,
-    price: 4.2,
-    stock: 240,
-    deliveryTime: "24hrs",
-    productImage: "/img/camisero.jpg",
-  },
-];
+export default function ProductList({ products }: { products: Product[] }) {
 
-export default function ProductList() {
+  console.log(products)
   return (
     <div className="w-full max-w-3xl mx-auto space-y-4 p-4">
       {products.map((product, index) => (
@@ -58,8 +30,8 @@ export default function ProductList() {
             <div className="flex items-start gap-2">
               <div className="flex-shrink-0">
                 <Image
-                  src={product.productImage}
-                  alt={`${product.storeName} product`}
+                  src="/img/camisero.jpg"
+                  alt={`${product.nombre} product`}
                   width={120}
                   height={120}
                   className="rounded-lg object-cover"
@@ -69,33 +41,36 @@ export default function ProductList() {
               <div className="flex-1 min-w-0 pt-4">
                 <div className="flex flex-row gap-4">
                   <span className="font-semibold text-lg">
-                    {product.storeName}
+                    {product.nombre}
                   </span>
                 </div>
 
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Envío: </span>
-                  <span className="font-medium">{product.deliveryTime}</span>
+                 
+                   <span className="font-medium">25 hs</span>
+              
+                 
                 </div>
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Stock: </span>
-                  <span className="font-medium">{product.stock} uni</span>
+                  <span className="font-medium">{product.unidades} uni</span>
                 </div>
 
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Ventas</span>
-                  <span className="font-medium">{product.sales}</span>
+                  <span className="font-medium">{product.precio.toFixed(0)}</span>
                 </div>
 
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Rating</span>
-                  <span className="font-medium">{product.rating}%</span>
+                  <span className="font-medium">100%</span>
                   <CheckCircle className="text-green-500 w-5 h-5" />
                 </div>
               </div>
 
               <div className="pt-[30px] flex-col">
-                <Link href="/products"> 
+                <Link href={`/products/${product._id}`}> 
                 <Button className="bg-green-500 hover:bg-green-600 text-white">
                   Ver más
                 </Button>
@@ -104,7 +79,7 @@ export default function ProductList() {
                   <span className="text-[22px] text-black text-muted-foreground">
                     S/
                   </span>
-                  <span>{product.price.toFixed(2)}</span>
+                  <span>{product.precio.toFixed(0)}</span>
                 </div>
               </div>
             </div>
