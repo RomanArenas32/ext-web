@@ -93,7 +93,7 @@ export default function Page() {
           By proceeding, you've read and agreed to the{' '}
           <a href="#" className="text-green-600 underline">Wanya Emprende ya legal disclaimer</a>.
         </p>
-        <Link href="/chats">
+        <Link href="/confirmacion">
           <button className="w-full bg-green-800 text-white rounded-full py-4 mt-6 mb-8 font-medium">
             Lo quiero ya!
           </button>
