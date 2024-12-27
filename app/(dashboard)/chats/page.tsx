@@ -6,6 +6,7 @@ import { useState } from "react"
 import ChatList from "@/components/sell/chatea"
 import ChatDetail from "@/components/sell/chatbox"
 import OrderDetail from "@/components/sell/ventarealizada"
+import ChatWithWarning from "@/components/sell/chatfinal"
 
 export default function Page() {
 
@@ -29,7 +30,9 @@ export default function Page() {
                 <OrderDetail/>
         </div>
 
-    
+        <div className="flex flex-row items-center gap-8 p-4 pt-20 justify-between">
+                <ChatWithWarning/>
+        </div>
         </div>
     )
 }
