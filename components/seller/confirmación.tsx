@@ -2,6 +2,7 @@
 
 import { ChevronLeft, MessageSquareMore, AlertTriangle, ClipboardCheck } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 export default function Confirmation() {
   return (
     <div className="bg-gray-50 h-[840px] flex justify-center py-8">
@@ -29,13 +30,16 @@ export default function Confirmation() {
 
           </div>
           <div className="relative inline-block">
-          <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
-            Chat <MessageSquareMore  className="w-4 h-4 ml-2" />
-          </button>
-          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-    1
-  </span>
-        </div>
+            <Link href={`/chats`}>
+              <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
+                Chat <MessageSquareMore className="w-4 h-4 ml-2" />
+              </button>
+            </Link>
+
+            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+              1
+            </span>
+          </div>
         </div>
 
         {/* Product Details */}

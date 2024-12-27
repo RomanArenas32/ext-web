@@ -75,16 +75,7 @@ const ChatWithWarning = () => {
           <Plus className="w-5 h-5 text-gray-500" />
         </button>
       </div>
-      <div>
-      <Image
-  src="/img/32.svg"
-  width={50}
-  height={50}
-  alt="token background"
-  className="w-full pt-4"
-/>
-
-      </div>
+      
     </div>
   );
 };

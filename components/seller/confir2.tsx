@@ -14,7 +14,7 @@ export default function Confirm2() {
           <h1 className="text-lg font-bold pl-[130px]">Confirmación</h1>
         </div>
 
-       
+
         {/* Countdown */}
         <div className="px-6 py-4">
           <p className="text-sm text-gray-700">
@@ -27,16 +27,16 @@ export default function Confirm2() {
           <div>
             <p className="text-green-700 font-semibold">Negocio 1 <span className="text-green-500">✔</span></p>
             <p className="text-sm text-gray-700">Contacto: Tucto Gladys Karol</p>
-            </div>
-            <div className="relative inline-block">
-  <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
-    Chat <MessageSquareMore className="w-4 h-4 ml-2" />
-  </button>
-  <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-    1
-  </span>
-</div>
-</div>
+          </div>
+          <div className="relative inline-block">
+            <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
+              Chat <MessageSquareMore className="w-4 h-4 ml-2" />
+            </button>
+            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+              1
+            </span>
+          </div>
+        </div>
         {/* Product Details */}
         <div className="px-6 py-4">
           <h2 className="text-lg font-semibold text-red-500">Polo</h2>
@@ -62,7 +62,7 @@ export default function Confirm2() {
         </div>
 
         {/* Alert Message */}
-        
+
 
         {/* Buttons */}
         <div className="px-6 py-4 flex flex-col gap-4">
@@ -80,7 +80,7 @@ export default function Confirm2() {
         </div>
       </div>
     </div>
-    
-   
+
+
   );
 }
