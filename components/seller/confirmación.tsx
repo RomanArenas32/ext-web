@@ -26,10 +26,16 @@ export default function Confirmation() {
           <div>
             <p className="text-green-700 font-semibold">Negocio 1 <span className="text-green-500">✔</span></p>
             <p className="text-sm text-gray-700">Contacto: Tucto Gladys Karol</p>
+
           </div>
+          <div className="relative inline-block">
           <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
             Chat <MessageSquareMore  className="w-4 h-4 ml-2" />
           </button>
+          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+    1
+  </span>
+        </div>
         </div>
 
         {/* Product Details */}
