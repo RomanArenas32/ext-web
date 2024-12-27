@@ -2,6 +2,7 @@
 import { Separator } from "@/components/ui/separator"
 import { ChevronLeft } from "lucide-react"
 import UserProfile from "@/components/sell/homecell"
+import PublishAdForm from "./publicaraviso"
 
 
 
@@ -23,6 +24,7 @@ export default function Page() {
                 SELL
             </div>
             <UserProfile />
+            <PublishAdForm />
         </div>
 
     )
