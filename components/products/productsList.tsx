@@ -1,13 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 
-interface Product {
+export interface Product {
   _id: string;          
   __v: number;          
   color: string;       
