@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 interface Product {
   storeName: string;
@@ -94,9 +95,11 @@ export default function ProductList() {
               </div>
 
               <div className="pt-[30px] flex-col">
+                <Link href="/products"> 
                 <Button className="bg-green-500 hover:bg-green-600 text-white">
                   Ver más
                 </Button>
+                </Link>
                 <div className="text-3xl font-bold flex items-baseline pt-[20px] gap-x-1">
                   <span className="text-[22px] text-black text-muted-foreground">
                     S/

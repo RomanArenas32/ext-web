@@ -4,8 +4,8 @@ import { ChevronLeft, MessageSquareMore, AlertTriangle, ClipboardCheck } from 'l
 import Image from 'next/image';
 export default function Confirmation() {
   return (
-    <div className="bg-gray-50 min-h-screen flex justify-center py-8">
-      <div className="bg-white w-full max-w-md rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-gray-50 h-[840px] flex justify-center py-8">
+      <div className="bg-white w-full max-w-md pb-4 rounded-lg overflow-hidden shadow-lg">
         {/* Header */}
         <div className="bg-green-800 text-white p-6 flex items-center justify-between relative">
           <button className="absolute left-4">
@@ -69,13 +69,13 @@ export default function Confirmation() {
         {/* Buttons */}
         <div className="px-6 py-4 flex flex-col gap-4">
           <button
-            className="bg-gray-300 text-gray-600 py-2 px-4 rounded-3xl text-center font-medium cursor-not-allowed"
+            className="bg-green-100 text-black py-2 px-4 rounded-3xl text-center font-medium cursor-not-allowed"
             disabled
           >
             Producto recibido
           </button>
           <button
-            className="bg-red-500 text-white py-2 px-4 rounded-3xl text-center font-medium"
+            className="bg-gray-200 text-black py-2 px-4 rounded-3xl text-center font-medium"
           >
             Cancelar
           </button>

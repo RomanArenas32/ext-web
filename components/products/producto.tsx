@@ -38,14 +38,14 @@ const ProductView = () => {
         </div>
         <div className="flex pl-10 justify-center pt-4 gap-4">
             {/* <span className="text-20 text-bold">Color</span> */}
-          <button className="h-10 w-10 rounded-full border bg-white"></button>
+          <button className="h-10 w-10 rounded-full border-2 border-gray-500 bg-white"></button>
           <button className="h-10 w-10 rounded-full border bg-yellow-400"></button>
           <button className="h-10 w-10 rounded-full border bg-green-400"></button>
         </div>
       </div>
 
       {/* Talla */}
-      <div className="space-y-2">
+      <div className="space-y-4 ml-4">
         <span className="text-sm font-semibold">Talla</span>
         <div className="flex gap-2">
           <button className="px-4 py-2 border rounded-full">S</button>
@@ -56,8 +56,8 @@ const ProductView = () => {
       </div>
 
       {/* Cantidad */}
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
+      <div className="space-y-4 ml-4">
+        <div className="flex items-center justify-between mr-4">
           <span className="text-sm font-semibold">Cantidad</span>
           <span className="text-lg font-bold">56 UN</span>
         </div>
@@ -66,26 +66,26 @@ const ProductView = () => {
       </div>
 
       {/* Total */}
-      <div className="flex justify-between items-center py-4 border-t border-b">
+      <div className="flex justify-between items-center py-4 mx-4 border-t border-b">
         <span className="text-sm font-semibold">Total</span>
         <span className="text-lg font-bold">S/ 190.05</span>
       </div>
 
       {/* Tiempo de entrega */}
-      <div className="flex justify-between items-center text-sm">
+      <div className="flex justify-between items-center mx-4 text-sm">
         <span className="text-muted-foreground">Tiempo entrega</span>
         <span className="font-medium">4 a 24 hrs</span>
       </div>
 
       {/* Disclaimer */}
-      <div className="text-xs text-muted-foreground">
+      <div className="text-xs mx-4 text-muted-foreground">
         By proceeding, you've read and agreed to the
         <a href="#" className="text-green-600 underline"> Wanya Emprende ya legal disclaimer.</a>
       </div>
 
       {/* Botón */}
-      <div className="text-center">
-        <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700">
+      <div className="text-center pb-4">
+        <button className="px-6 py-3 bg-green-600 pb-2 text-white font-semibold rounded-full hover:bg-green-700">
           Lo quiero ya!
         </button>
       </div>
