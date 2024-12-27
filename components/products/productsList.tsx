@@ -1,14 +1,13 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle } from 'lucide-react'
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle } from "lucide-react";
 
 interface Product {
   storeName: string;
-  storeImage: string;
   sales: number;
   rating: number;
   price: number;
@@ -20,35 +19,34 @@ interface Product {
 const products: Product[] = [
   {
     storeName: "KellyFashion",
-    storeImage: "/placeholder.svg",
-    sales: 130,
-    rating: 100.00,
-    price: 3.40,
-    stock: 100,
+
+    sales: 72,
+    rating: 76.0,
+    price: 3.4,
+    stock: 40,
     deliveryTime: "24hrs",
-    productImage: "/placeholder.svg"
+    productImage: "/img/camisero.jpg",
   },
   {
-    storeName: "Mc Store",
-    storeImage: "/placeholder.svg",
-    sales: 130,
-    rating: 100.00,
-    price: 3.80,
+    storeName: "Mc-Store",
+    sales: 115,
+    rating: 98.0,
+    price: 3.8,
     stock: 90,
     deliveryTime: "24hrs",
-    productImage: "/placeholder.svg"
+    productImage: "/img/camisero.jpg",
   },
   {
-    storeName: "MerlinaClothing",
-    storeImage: "/placeholder.svg",
-    sales: 130,
-    rating: 100.00,
-    price: 4.20,
-    stock: 100,
+    storeName: "MerxClothing",
+
+    sales: 330,
+    rating: 92.0,
+    price: 4.2,
+    stock: 240,
     deliveryTime: "24hrs",
-    productImage: "/placeholder.svg"
-  }
-]
+    productImage: "/img/camisero.jpg",
+  },
+];
 
 export default function ProductList() {
   return (
@@ -56,7 +54,7 @@ export default function ProductList() {
       {products.map((product, index) => (
         <Card key={index} className="overflow-hidden">
           <CardContent className="p-6">
-            <div className="flex items-start gap-6">
+            <div className="flex items-start gap-2">
               <div className="flex-shrink-0">
                 <Image
                   src={product.productImage}
@@ -66,51 +64,50 @@ export default function ProductList() {
                   className="rounded-lg object-cover"
                 />
               </div>
-              
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="h-8 w-8 rounded-full overflow-hidden">
-                    <Image
-                      src={product.storeImage}
-                      alt={product.storeName}
-                      width={32}
-                      height={32}
-                      className="object-cover"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-lg">{product.storeName}</h3>
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span>{product.sales} ventas</span>
-                    <span>{product.rating.toFixed(2)}%</span>
-                  </div>
+
+              <div className="flex-1 min-w-0 pt-4">
+                <div className="flex flex-row gap-4">
+                  <span className="font-semibold text-lg">
+                    {product.storeName}
+                  </span>
                 </div>
 
-                <div className="flex flex-wrap items-baseline gap-x-2 mb-4">
-                  <span className="text-sm text-muted-foreground">S/</span>
-                  <span className="text-3xl font-bold">{product.price.toFixed(2)}</span>
+                <div className="flex flex-row gap-2">
+                  <span className="text-muted-foreground">Envío: </span>
+                  <span className="font-medium">{product.deliveryTime}</span>
+                </div>
+                <div className="flex flex-row gap-2">
+                  <span className="text-muted-foreground">Stock: </span>
+                  <span className="font-medium">{product.stock} uni</span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-sm mb-4">
-                  <div>
-                    <span className="text-muted-foreground">Stock: </span>
-                    <span className="font-medium">{product.stock} UN</span>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Envío: </span>
-                    <span className="font-medium">{product.deliveryTime}</span>
-                  </div>
+                <div className="flex flex-row gap-2">
+                  <span className="text-muted-foreground">Ventas</span>
+                  <span className="font-medium">{product.sales}</span>
+                </div>
+
+                <div className="flex flex-row gap-2">
+                  <span className="text-muted-foreground">Rating</span>
+                  <span className="font-medium">{product.rating}%</span>
+                  <CheckCircle className="text-green-500 w-5 h-5" />
                 </div>
               </div>
 
-              <Button className="bg-green-500 hover:bg-green-600 text-white">
-                Ver más
-              </Button>
+              <div className="pt-[30px] flex-col">
+                <Button className="bg-green-500 hover:bg-green-600 text-white">
+                  Ver más
+                </Button>
+                <div className="text-3xl font-bold flex items-baseline pt-[20px] gap-x-1">
+                  <span className="text-[22px] text-black text-muted-foreground">
+                    S/
+                  </span>
+                  <span>{product.price.toFixed(2)}</span>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
       ))}
     </div>
-  )
+  );
 }
-

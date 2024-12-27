@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Image from "next/image"
 import { Input } from '../ui/input'
 import ProductList from './productsList'
+import ProductView from './producto'
 
 const categories = [
   {
@@ -33,7 +34,7 @@ export default function ProductCategories() {
   return (
     <>
     <Carousel className="w-full flex max-w-4xl items-center justify-center">
-      <CarouselContent className="-ml-2 md:-ml-4">
+      <CarouselContent className="-ml-2">
         {categories.map((category, index) => (
           <CarouselItem key={index} className="pl-2 md:pl-4 basis-auto">
             <div className="flex flex-col items-center gap-2">
@@ -52,12 +53,13 @@ export default function ProductCategories() {
         ))}
       </CarouselContent>
       <CarouselPrevious className="-left-12" />
-      <CarouselNext className="-right-12" />
+      <CarouselNext className="right-2" />
     </Carousel>
-    <div className='flex justify-center w-full'>
-      <Input placeholder="Buscar productos" className="w-full mt-4 max-w-[362px]"/>
+    <div className='flex relative justify-center mx-4 ml-[14px] w-[400px]'>
+      <Input placeholder="Buscar productos" className="w-full rounded-lg ml-22 mt-4 max-w-[462px]"/>
     </div>
     <ProductList />
+   <ProductView />
     </>
     
   )
