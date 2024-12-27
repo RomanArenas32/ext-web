@@ -1,15 +1,22 @@
+"use client";
+
+
 import React from 'react';
 import { Camera, X } from 'lucide-react';
+import Link from 'next/link';
 
-const PublishAdForm = () => {
+export default function Page() {
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Publicar aviso</h2>
-        <button className="text-muted-foreground">
+        <Link href={"/sell"}>
+          <button className="text-muted-foreground">
           <X className="w-5 h-5" />
         </button>
+        </Link>
+      
       </div>
 
       {/* Agregar fotos */}
@@ -98,4 +105,4 @@ const PublishAdForm = () => {
   );
 };
 
-export default PublishAdForm;
+

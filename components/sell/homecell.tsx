@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle, Mail, Smartphone, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
 
 const UserProfile = () => {
   const products = [
@@ -68,9 +69,12 @@ const UserProfile = () => {
 
       {/* Main Button */}
       <div className="text-center">
-        <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700">
-          Publicar aviso
-        </button>
+        <Link href={`/sell/publicar`}>
+          <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700">
+            Publicar aviso
+          </button>
+        </Link>
+
       </div>
 
       {/* Product List */}
