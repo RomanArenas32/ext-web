@@ -12,7 +12,7 @@ export function RoleSwitch({ role, onRoleChange, className, ...props }: RoleSwit
   return (
     <div
       className={cn(
-        "inline-flex h-10 items-center rounded-full bg-muted p-1",
+        "inline-flex h-10 w-[60%] items-center mx-auto rounded-full bg-muted p-1",
         className
       )}
       {...props}
@@ -20,7 +20,7 @@ export function RoleSwitch({ role, onRoleChange, className, ...props }: RoleSwit
       <button
         onClick={() => onRoleChange("customer")}
         className={cn(
-          "inline-flex items-center justify-center rounded-full px-8 py-1 text-sm transition-colors",
+          "inline-flex items-center w-[50%] justify-center rounded-full px-8 py-1 text-sm transition-colors",
           role === "customer"
             ? "bg-background shadow"
             : "text-muted-foreground hover:bg-background/50"
@@ -31,7 +31,7 @@ export function RoleSwitch({ role, onRoleChange, className, ...props }: RoleSwit
       <button
         onClick={() => onRoleChange("seller")}
         className={cn(
-          "inline-flex items-center justify-center rounded-full px-8 py-1 text-sm transition-colors",
+          "inline-flex items-center w-[50%] justify-center rounded-full px-8 py-1 text-sm transition-colors",
           role === "seller"
             ? "bg-background shadow"
             : "text-muted-foreground hover:bg-background/50"

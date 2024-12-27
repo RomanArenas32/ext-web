@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function NavigationFooter() {
   return (
-    <CardFooter className=" gap-2 p-4 border-t bg-[#F7F7F7] rounded-3xl my-4 w-[80%] mx-auto h-[64px] flex flex-row items-center justify-between">
+    <CardFooter className="gap-2 p-6 border-t bg-[#F7F7F7] rounded-3xl mb-[66px] w-[80%] mx-auto h-[64px] flex flex-row items-center justify-between">
       <Link 
         href="/p2p"
         className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
