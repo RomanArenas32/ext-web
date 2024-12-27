@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { ChevronDown, Filter } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer-money"
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer"
 import { Cryptocurrencies, money } from "@/api/money"
 
 export function PaymentSelector() {
@@ -19,7 +19,10 @@ export function PaymentSelector() {
       <Drawer>
         <DrawerTrigger asChild>
           <Button variant="outline" className="flex items-center gap-2 min-w-[140px]">
-            <img src={getCurrencyImage(selectedCrypto)} alt={selectedCrypto} className="w-8 h-8 rounded-full" />
+            {/*
+                        <img src={getCurrencyImage(selectedCrypto)} alt={selectedCrypto} className="w-8 h-8 rounded-full" />
+
+            */}
             {selectedCrypto}
             <ChevronDown className="h-4 w-4 ml-auto" />
           </Button>
@@ -52,9 +55,7 @@ export function PaymentSelector() {
       <Drawer>
         <DrawerTrigger asChild>
           <Button variant="outline" className="flex items-center gap-2 flex-1">
-            {selectedPaymentMethod && (
-              <img src={getCurrencyImage(selectedPaymentMethod)} alt={selectedPaymentMethod} className="w-6 h-6 rounded-full" />
-            )}
+           
             <span className="text-muted-foreground">
               {selectedPaymentMethod || "Metodo de Pago"}
             </span>
