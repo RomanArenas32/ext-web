@@ -6,6 +6,10 @@ import Image from "next/image"
 import { Input } from '../ui/input'
 import ProductList from './productsList'
 import ProductView from './producto'
+import { useEffect, useState } from 'react'
+import { getProducts } from '@/actions/products'
+
+
 
 const categories = [
   {
@@ -31,6 +35,20 @@ const categories = [
 ]
 
 export default function ProductCategories() {
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const reponse = await getProducts()
+        setProducts(reponse)
+      } catch (error) {
+        console.log('Error obtaining products')
+        
+      }
+    }
+    fetchProducts()
+  }, [])
+console.log(products)
   return (
     <>
     <Carousel className="w-full flex max-w-4xl items-center justify-center">

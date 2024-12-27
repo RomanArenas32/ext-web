@@ -6,8 +6,8 @@ import { ReactNode } from "react";
 
 export default function Page() {
     return (
-        <div className="bg-gray-50 h-[720px] flex justify-center py-2">
-            <div className="bg-white w-full h-[690px] max-w-md rounded-2xl overflow-hidden shadow-lg">
+        <div className="bg-gray-50 h-[720px] flex justify-center">
+            <div className="bg-white w-full h-[690px] max-w-md shadow-lg">
                 <div className="bg-green-800 text-white p-4 flex items-center gap-4">
                     <button className="absolute  left-4 pt-10">
                         <ChevronLeft className="text-white w-6 h-6" />

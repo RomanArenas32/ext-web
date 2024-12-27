@@ -14,12 +14,11 @@ export default function Page() {
     return (
         <div className="py-0">
 
-            <div className="h-[76px] bg-green-800 rounded-t-2xl mb-2 flex items-center gap-4 p-6 justify-start">
-                <Link
-                    href="/"
-                    className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors text-white"
-                >
-                    <ChevronLeft />
+            <div className="h-[76px] bg-green-800  mb-2 flex items-center gap-4 p-6 justify-center">
+                <Link href="/">
+                    <button className="absolute left-4">
+                        <ChevronLeft className="text-white w-6 h-6" />
+                    </button>
                 </Link>
 
                 <h2 className="w-full text-center text-white font-bold -ml-10 text-[18px]">¡EmprendeYA!</h2>
