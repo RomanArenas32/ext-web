@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator"
 import { ChevronLeft, Search } from "lucide-react"
 import { useState } from "react"
 import Confirmation from "@/components/seller/confirmación"
+import Confirm2 from "@/components/seller/confir2"
 
 export default function Page() {
     const [role, setRole] = useState<"customer" | "seller">("customer")
@@ -28,6 +29,7 @@ export default function Page() {
 
             {role === "customer" ? <CustomerHome /> : <SellerHome />}
 <Confirmation />
+<Confirm2 />
             <NavigationFooter />
         </div>
 
