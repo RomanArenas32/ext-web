@@ -4,6 +4,7 @@ import Link from "next/link"
 
 export default function NavigationFooter() {
   return (
+
     <CardFooter className=" gap-2 p-4 border-t bg-[#F7F7F7] rounded-3xl my-2 mx-4 w-[375px] h-[64px] flex flex-row items-center justify-around">
      
      <Link 

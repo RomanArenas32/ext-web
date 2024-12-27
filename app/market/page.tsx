@@ -1,13 +1,14 @@
 "use client"
 
 import NavigationFooter from "@/components/common/panelFooter"
-import CustomerHome from "@/components/customer/home"
-import { SellerHome } from "@/components/seller/home"
+import  CustomerHome  from "@/components/customer/home"
+import SellerHome from "@/components/seller/home"
 import { RoleSwitch } from "@/components/ui/role-swich"
 import { Separator } from "@/components/ui/separator"
 import { ChevronLeft } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+import Confirmation from "@/components/seller/confirmación"
 
 export default function Page() {
     const [role, setRole] = useState<"customer" | "seller">("customer")
@@ -23,7 +24,7 @@ export default function Page() {
                     <ChevronLeft />
                 </Link>
 
-                <h2 className="w-full text-center text-[16px]">Emprende ya</h2>
+                <h2 className="w-full text-center text-[16px]">¡EmprendeYA!</h2>
               
             </div>
 
@@ -34,7 +35,7 @@ export default function Page() {
             </div>
 
             {role === "customer" ? <CustomerHome /> : <SellerHome />}
-
+<Confirmation />
             <NavigationFooter />
         </div>
 
