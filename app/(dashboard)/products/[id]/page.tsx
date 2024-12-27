@@ -52,7 +52,7 @@ export default function Page() {
               alt="Producto"
               className="h-24 w-24 object-cover"
             />
-          
+
           </div>
           <div className="flex items-center gap-3">
             <button className="h-10 w-10 rounded-full border-2 border-gray-300 bg-white"></button>
@@ -93,9 +93,12 @@ export default function Page() {
           By proceeding, you've read and agreed to the{' '}
           <a href="#" className="text-green-600 underline">Wanya Emprende ya legal disclaimer</a>.
         </p>
-        <button className="w-full bg-green-800 text-white rounded-full py-4 mt-6 mb-8 font-medium">
-          Lo quiero ya!
-        </button>
+        <Link href="/chats">
+          <button className="w-full bg-green-800 text-white rounded-full py-4 mt-6 mb-8 font-medium">
+            Lo quiero ya!
+          </button>
+        </Link>
+
       </div>
     </div>
   );

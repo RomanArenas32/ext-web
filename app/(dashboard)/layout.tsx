@@ -17,13 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-        <NavigationFooter />
-      </body>
-    </html>
+    <div
+      className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+    >
+      <main className="flex-1">{children}</main>
+      <NavigationFooter />
+    </div>
   );
 }

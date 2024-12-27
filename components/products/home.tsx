@@ -29,6 +29,36 @@ const categories = [
     id: 4,
     name: "Zapatillas",
     img: "icon/444.svg"
+  },
+  {
+    id: 5,
+    name: "Polo",
+    img: "icon/111.svg"
+  },
+  {
+    id: 6,
+    name: "Short",
+    img: "icon/2222.svg"
+  },
+  {
+    id: 7,
+    name: "Vestidos",
+    img: "icon/3333.svg"
+  },
+  {
+    id: 8,
+    name: "Zapatillas",
+    img: "icon/444.svg"
+  },
+  {
+    id: 9,
+    name: "Vestidos",
+    img: "icon/3333.svg"
+  },
+  {
+    id: 10,
+    name: "Zapatillas",
+    img: "icon/444.svg"
   }
 ]
 
