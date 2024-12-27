@@ -2,38 +2,40 @@ import { Search } from 'lucide-react'
 import { Input } from "@/components/ui/input"
 import { MerchantCard } from "./productCard"
 import { Cryptocurrencies } from '@/api/money'
+import { PaymentSelector } from "./payment-selector"
 
 const merchants = [
   {
+    id:1,
     name: "Negocio 1",
     verified: true,
-    transactions: 100,
+    transactions: 130,
     completionRate: 100,
-    price: 3.768,
-    currency: Cryptocurrencies.USDT,
-    available: 108.13,
-    orderLimit: "50-407.43 PEN",
+    price: 80.00,
+    currency: "USDT",
+    available: 50,
+    shipping: "24hrs",
     paymentMethods: [
       { name: "Credit Bank of Peru", icon: null },
       { name: "INTERBANK", icon: null },
-      { name: "Yape", icon: null },
-      { name: "Plin", icon: null },
     ],
   },
   {
-    name: "Eldorado",
+    id: 2,
+    name: "Negocio 1",
     verified: true,
-    transactions: 100,
+    transactions: 130,
     completionRate: 100,
-    price: 3.759,
+    price: 80.00,
     currency: "USDT",
-    available: 108.13,
-    orderLimit: "50-407.43 PEN",
+    available: 50,
+    shipping: "24hrs",
     paymentMethods: [
       { name: "Credit Bank of Peru", icon: null },
-      { name: "Yape", icon: null },
+      { name: "INTERBANK", icon: null },
     ],
   },
+  
 ]
 
 export default function CustomerHome() {
@@ -42,13 +44,14 @@ export default function CustomerHome() {
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
-          placeholder="Buscador general"
+          placeholder="Buscar producto"
           className="pl-9"
         />
       </div>
+      <PaymentSelector />
       <div className="space-y-4">
         {merchants.map((merchant) => (
-          <MerchantCard key={merchant.name} {...merchant} />
+          <MerchantCard key={merchant.id} {...merchant} />
         ))}
       </div>
     </div>
