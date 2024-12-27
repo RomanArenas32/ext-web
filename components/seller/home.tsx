@@ -1,113 +1,81 @@
 'use client'
 
-import { Check } from 'lucide-react'
+import { Download, Upload, Repeat, ChevronLeft, ChevronRight, History, Plus, RefreshCw, TrendingUp, Store, Info, Shield, Star, Globe } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
-// Mock data for sellers
-const sellers = [
-  {
-    id: 1,
-    name: "GirosFaynad",
-    verified: true,
-    transactions: 100,
-    completion: 100,
-    rate: 3.768,
-    available: 108.13,
-    orderLimit: "50-407.43",
-    paymentMethods: ["Credit Bank of Peru", "INTERBANK", "Yape", "Plin"]
-  },
-  {
-    id: 2,
-    name: "GirosFaynad",
-    verified: true,
-    transactions: 100,
-    completion: 100,
-    rate: 3.759,
-    available: 108.13,
-    orderLimit: "50-407.43",
-    paymentMethods: ["Skrill", "Revolut"]
-  },
-  {
-    id: 3,
-    name: "GirosFaynad",
-    verified: true,
-    transactions: 100,
-    completion: 100,
-    rate: 3.742,
-    available: 108.13,
-    orderLimit: "50-407.43",
-    paymentMethods: ["Credit Bank of Peru", "INTERBANK"]
-  }
-]
-
-export function SellerHome() {
+export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto p-4 space-y-4">
-      {sellers.map((seller) => (
-        <Card key={seller.id} className="p-4">
-          <div className="space-y-4">
-            {/* Header with name and verification */}
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white">
-                M
-              </div>
-              <span className="text-lg font-medium">{seller.name}</span>
-              {seller.verified && (
-                <Check className="w-5 h-5 text-emerald-500" />
-              )}
-            </div>
-
-            {/* Stats row */}
-            <div className="flex items-center gap-6 text-sm text-gray-600">
-              <span>{seller.transactions} transactiones</span>
-              <span>{seller.completion}% completion</span>
-              <span>{seller.completion}%</span>
-            </div>
-
-            {/* Rate */}
-            <div className="flex items-baseline gap-1">
-              <span className="text-sm">S/</span>
-              <span className="text-3xl font-bold">{seller.rate}</span>
-              <span className="text-sm text-gray-600">/USDT</span>
-            </div>
-
-            {/* Available and Order limit */}
-            <div className="space-y-1">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Available</span>
-                <span>{seller.available} USDT</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Order limit</span>
-                <span>{seller.orderLimit} PEN</span>
-              </div>
-            </div>
-
-            {/* Payment methods */}
-            <div className="flex flex-wrap gap-2">
-              {seller.paymentMethods.map((method) => (
-                <span
-                  key={method}
-                  className="px-2 py-1 bg-gray-100 rounded-full text-sm"
-                >
-                  {method}
-                </span>
-              ))}
-            </div>
-
-            {/* Sell button */}
-            <div className="flex justify-end">
-              <Button
-                className="bg-red-500 hover:bg-red-600 text-white px-8"
-              >
-                Sell
-              </Button>
+    <div className="bg-gray-50 h-[720px] flex justify-center py-2">
+      <div className="bg-white w-full h-[690px] max-w-md rounded-2xl overflow-hidden shadow-lg">
+        <div className="bg-green-800 text-white p-4 flex items-center gap-4">
+        <button className="absolute  left-4 pt-10">
+            <ChevronLeft className="text-white w-6 h-6" />
+          </button>
+          <Image
+            src="/img/1828.png"
+            width={6}
+            height={6}
+            alt="Profile"
+            className="w-16 h-16 ml-10 rounded-full object-cover"
+          />
+          <div className="pl-[2px]">
+            <h1 className="text-xl font-bold">Gamarrita crece</h1>
+            <div className="flex flex-row gap-4">
+            <p className="text-sm mt-2">ID: 62511839</p>
+            <span className="text-xs bg-green-800 text-white px-2 py-0 rounded-full mt-2 inline-block">Verified</span>
             </div>
           </div>
-        </Card>
-      ))}
+          <button className="absolute right-4 pt-10">
+            <ChevronRight className="text-white w-6 h-6" />
+          </button>
+        </div>
+        <div className="p-6">
+          <Section title="Wallet">
+            <Item icon={<Download />} label="Deposit" />
+            <Item icon={<Upload />} label="Withdraw" />
+            <Item icon={<Repeat />} label="Transfer" />
+            <Item icon={<History />} label="History" />
+            <Item icon={<Plus />} label="Buy crypto" />
+            <Item icon={<RefreshCw />} label="Swap" />
+            <Item icon={<TrendingUp />} label="P2P trading" />
+            <Item icon={<Store />} label="Emprende ya!" />
+          </Section>
+          <Section title="Wanya">
+            <Item icon={<Info />} label="About us" />
+            <Item icon={<Globe />} label="Social" />
+            <Item icon={<Shield />} label="Legal" />
+            <Item icon={<Star />} label="Referral" />
+          </Section>
+          <Section title="More">
+            <Item icon={<Info />} label="Support" />
+            <Item icon={<Star />} label="Feedback" />
+          </Section>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
+import { ReactNode } from 'react';
+
+function Section({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="mb-6">
+      <h2 className="text-lg font-semibold mb-4">{title}</h2>
+      <div className="grid grid-cols-4 gap-4">{children}</div>
+    </div>
+  );
+}
+
+function Item({ icon, label }: { icon: ReactNode; label: string }) {
+  return (
+    <div className="flex flex-col items-center text-center">
+      <div className="w-12 h-12 flex items-center justify-center text-green-700 bg-green-100 rounded-full mb-0">
+        {icon}
+      </div>
+      <p className="text-sm font-medium">{label}</p>
+    </div>
+  );
+}
