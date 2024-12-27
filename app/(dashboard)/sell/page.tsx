@@ -1,6 +1,8 @@
 
 import { Separator } from "@/components/ui/separator"
-import { ChevronLeft } from "lucide-react"
+import { ChevronLeft, Upload } from "lucide-react"
+import UserProfile from "@/components/sell/homecell"
+import Link from "next/link"
 
 
 
@@ -8,18 +10,19 @@ export default function Page() {
 
     return (
         <div>
-            <div className="h-[56px] flex items-center p-4">
-                <div className="flex-1 items-start">
-                    <ChevronLeft />
-
+            <div className="bg-white w-full max-w-md pb-4 rounded-lg overflow-hidden shadow-lg">
+                <div className="bg-green-800 text-white p-6 flex items-center justify-between relative h-[20vh]">
+                    <div className="w-full flex flex-row justify-between px-4">
+                        <Link href="/">
+                            <ChevronLeft className="text-white w-6 h-6" />
+                        </Link>
+                        <Upload />
+                    </div>
                 </div>
-                <h2 className="flex-1">Orders</h2>
             </div>
 
             <Separator />
-            <div className="flex flex-row items-center gap-8 p-4 justify-between">
-                SELL
-            </div>
+            <UserProfile />
         </div>
 
     )

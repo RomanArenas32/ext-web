@@ -4,8 +4,8 @@ import { ChevronLeft, MessageSquareMore, AlertTriangle, ClipboardCheck } from 'l
 import Image from 'next/image';
 export default function Confirmation() {
   return (
-    <div className="bg-gray-50 min-h-screen flex justify-center py-8">
-      <div className="bg-white w-full max-w-md rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-gray-50 h-[840px] flex justify-center py-8">
+      <div className="bg-white w-full max-w-md pb-4 rounded-lg overflow-hidden shadow-lg">
         {/* Header */}
         <div className="bg-green-800 text-white p-6 flex items-center justify-between relative">
           <button className="absolute left-4">
@@ -26,10 +26,16 @@ export default function Confirmation() {
           <div>
             <p className="text-green-700 font-semibold">Negocio 1 <span className="text-green-500">✔</span></p>
             <p className="text-sm text-gray-700">Contacto: Tucto Gladys Karol</p>
+
           </div>
+          <div className="relative inline-block">
           <button className="flex items-center bg-green-600 text-white px-4 py-1 rounded-full text-sm">
             Chat <MessageSquareMore  className="w-4 h-4 ml-2" />
           </button>
+          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+    1
+  </span>
+        </div>
         </div>
 
         {/* Product Details */}
@@ -69,13 +75,13 @@ export default function Confirmation() {
         {/* Buttons */}
         <div className="px-6 py-4 flex flex-col gap-4">
           <button
-            className="bg-gray-300 text-gray-600 py-2 px-4 rounded-3xl text-center font-medium cursor-not-allowed"
+            className="bg-green-100 text-black py-2 px-4 rounded-3xl text-center font-medium cursor-not-allowed"
             disabled
           >
             Producto recibido
           </button>
           <button
-            className="bg-red-500 text-white py-2 px-4 rounded-3xl text-center font-medium"
+            className="bg-gray-200 text-black py-2 px-4 rounded-3xl text-center font-medium"
           >
             Cancelar
           </button>
