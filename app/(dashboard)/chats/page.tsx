@@ -5,6 +5,7 @@ import { ChevronLeft } from "lucide-react"
 import { useState } from "react"
 import ChatList from "@/components/sell/chatea"
 import ChatDetail from "@/components/sell/chatbox"
+import OrderDetail from "@/components/sell/ventarealizada"
 
 export default function Page() {
 
@@ -24,8 +25,13 @@ export default function Page() {
             <div className="flex flex-row items-center gap-8 p-4 pt-20 justify-between">
                 <ChatDetail/>
         </div>
+        <div className="flex flex-row items-center gap-8 p-4 pt-20 justify-between">
+                <OrderDetail/>
         </div>
 
+    
+        </div>
     )
 }
+
 
