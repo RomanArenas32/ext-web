@@ -2,7 +2,7 @@
 
 import { ChevronLeft, MessageSquareMore, AlertTriangle, ClipboardCheck } from 'lucide-react';
 import Image from 'next/image';
-export default function Confirmation() {
+export default function Confirm2() {
   return (
     <div className="bg-gray-50 min-h-screen flex justify-center py-8">
       <div className="bg-white w-full max-w-md rounded-lg overflow-hidden shadow-lg">
