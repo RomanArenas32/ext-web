@@ -4,8 +4,8 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 interface RoleSwitchProps extends React.HTMLAttributes<HTMLDivElement> {
-  role: "customer" | "seller"
-  onRoleChange: (role: "customer" | "seller") => void
+  role: "product" | "seller"
+  onRoleChange: (role: "product" | "seller") => void
 }
 
 export function RoleSwitch({ role, onRoleChange, className, ...props }: RoleSwitchProps) {
@@ -18,15 +18,15 @@ export function RoleSwitch({ role, onRoleChange, className, ...props }: RoleSwit
       {...props}
     >
       <button
-        onClick={() => onRoleChange("customer")}
+        onClick={() => onRoleChange("product")}
         className={cn(
           "inline-flex items-center w-[50%] justify-center rounded-full px-8 py-1 text-sm transition-colors",
-          role === "customer"
+          role === "product"
             ? "bg-background shadow"
             : "text-muted-foreground hover:bg-background/50"
         )}
       >
-        Buy
+        Productos
       </button>
       <button
         onClick={() => onRoleChange("seller")}
@@ -37,7 +37,7 @@ export function RoleSwitch({ role, onRoleChange, className, ...props }: RoleSwit
             : "text-muted-foreground hover:bg-background/50"
         )}
       >
-        Sell
+        Servicios
       </button>
     </div>
   )

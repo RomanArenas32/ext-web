@@ -15,7 +15,7 @@ export default function NavigationFooter() {
         <span className="text-xs">Inicio</span>
       </Link>
       <Link 
-        href="/p2p"
+        href="/sell"
         className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
       >
         <Users2 className="h-6 w-6" />

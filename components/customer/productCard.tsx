@@ -48,7 +48,10 @@ export function MerchantCard({
           <span>{transactions} transactiones</span>
           <span>{completionRate}% completados</span>
           <div className="flex items-center gap-2">
-            <ThumbsUpIcon className="h-5 w-5" />
+            {/*
+                        <ThumbsUpIcon className="h-5 w-5" />
+
+            */}
             <span>{completionRate}%</span>
           </div>
         </div>
