@@ -16,7 +16,7 @@ export const productSchema = z.object({
 export async function getProducts() {
     console.log(API_URL)
     try {
-        const response = await fetch(`http://localhost:3030/products`, {
+        const response = await fetch(`https://ext-server.onrender.com/products`, {
             method: "GET",
         });
         const body = (await response.json()) as any;
@@ -44,7 +44,7 @@ export async function createProduct(formData: FormData) {
     const productData = validatedFields.data
   
     try {
-      const response = await fetch('http://localhost:3030/products', {
+      const response = await fetch('https://ext-server.onrender.com/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export async function getProductById(productId: string) {
     console.log("Obteniendo producto con ID:", productId);
 
     try {
-        const response = await fetch(`http://localhost:3030/products/${productId}`, {
+        const response = await fetch(`https://ext-server.onrender.com/products/${productId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

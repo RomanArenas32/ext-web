@@ -9,7 +9,7 @@ const OrderDetail = () => {
         <button>
           <ArrowLeft className="w-5 h-5 text-gray-600" />
         </button>
-        <h1 className="text-2xl font-semibold ml-[90px]">S/ 190.05</h1>
+        <h1 className="text-2xl font-semibold ml-[90px]">S/ 190.00</h1>
       </div>
 
       {/* Status */}
