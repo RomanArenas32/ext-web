@@ -8,19 +8,18 @@ import Link from "next/link"
 export default function Page() {
 
     return (
-        <div className="rounded-lg overflow-hidden shadow-lg">
-            <div className="bg-green-800 text-white p-6 flex items-center justify-between relative">
+        <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="bg-green-900 p-6 relative pb-10">
                 <Link href="/">
                     <button className="absolute left-4">
                         <ChevronLeft className="text-white w-6 h-6" />
                     </button>
                 </Link>
-
-                <h1 className="text-lg font-bold pl-[160px]">Orders</h1>
+                <h1 className="text-lg font-bold text-center flex justify-center">Orders</h1>
             </div>
 
             <Separator />
-            <div className="flex flex-row items-center gap-8 p-4 justify-between">
+            <div className="flex flex-row items-center gap-8 p-4 py-12 justify-between">
                 <OrdersView />
             </div>
         </div>

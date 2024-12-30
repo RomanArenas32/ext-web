@@ -12,17 +12,15 @@ export default function Page() {
     const [role, setRole] = useState<"product" | "seller">("product")
 
     return (
-        <div className="py-0">
-
-            <div className="h-[76px] bg-green-800  mb-2 flex items-center gap-4 p-6 justify-center">
+        <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="bg-green-900 pt-[60px] pb-10 mb-4 flex text-center relative justify-center">
                 <Link href="/">
-                    <button className="absolute left-4">
+                    <button className="absolute left-10">
                         <ChevronLeft className="text-white w-6 h-6" />
                     </button>
                 </Link>
 
-                <h2 className="w-full text-center text-white font-bold -ml-10 text-[18px]">¡EmprendeYA!</h2>
-
+                <h2 className="text-center text-white font-bold flex justify-center text-[18px]">¡EmprendeYA!</h2>
             </div>
 
             <Separator />

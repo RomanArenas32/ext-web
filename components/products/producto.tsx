@@ -17,7 +17,7 @@ const ProductView = () => {
             <ChevronLeft className="text-white w-6 h-6" />
           </button>
           <h1 className="text-lg font-bold pl-[130px]">Producto</h1>
-        <button className="px-4 py-1 border rounded-full text-sm">Ver detalle</button>
+          <button className="text-sm font-bold bg-green-600 text-white rounded-md px-2 py-0">Ver detalle</button>
         </div>
 
       {/* Precio */}

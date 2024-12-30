@@ -3,7 +3,7 @@ import { ArrowLeft, AlertCircle, Paperclip, Plus, Send } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ChatWithWarning = () => {
+const Chat = () => {
     return (
         <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md h-[760px] flex flex-col">
             {/* Header */}
@@ -84,4 +84,4 @@ const ChatWithWarning = () => {
     );
 };
 
-export default ChatWithWarning;
+export default Chat;

@@ -79,7 +79,11 @@ export default function ProductCategories() {
 
   return (
     <>
-      <Carousel className="w-full flex max-w-4xl items-center justify-center">
+      <Carousel 
+      opts={{
+        loop: true,
+      }}
+      className="w-full flex max-w-4xl items-center justify-center">
         <CarouselContent className="-ml-2">
           {categories.map((category, index) => (
             <CarouselItem key={index} className="pl-2 md:pl-4 basis-auto">
