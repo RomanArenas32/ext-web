@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 export default function Page() {
     return (
         
-            <div className="w-full h-[720px] rounded-2xl overflow-hidden">
+            <div className="w-full h-[720px] overflow-hidden">
                 <div className="bg-green-900 text-white p-6 flex justify-start gap-4 pb-10 pt-[60px]">
                     {/* <button className="absolute left-4 pt-2">
                         <ChevronLeft className="text-white w-6 h-6" />
