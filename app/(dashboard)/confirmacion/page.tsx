@@ -1,7 +1,7 @@
 "use client"
 
 
-import Confirm2 from "@/components/seller/confir2"
+import Confirmation from "@/components/seller/confirmación"
 
 
 export default function Page() {
@@ -9,7 +9,7 @@ export default function Page() {
     return (
 
         <div >
-            <Confirm2 />
+            <Confirmation />
         </div>
     )
 }

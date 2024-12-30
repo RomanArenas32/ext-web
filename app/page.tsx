@@ -6,29 +6,29 @@ import { ReactNode } from "react";
 
 export default function Page() {
     return (
-        <div className="bg-gray-50 h-[720px] flex justify-center">
-            <div className="bg-white w-full h-[690px] max-w-md shadow-lg">
-                <div className="bg-green-800 text-white p-4 flex items-center gap-4">
-                    <button className="absolute  left-4 pt-10">
+        
+            <div className="w-full h-[720px] overflow-hidden">
+                <div className="bg-green-900 text-white p-6 flex justify-start gap-4 pb-10 pt-[60px]">
+                    {/* <button className="absolute left-4 pt-2">
                         <ChevronLeft className="text-white w-6 h-6" />
-                    </button>
+                    </button> */}
                     <Image
-                        src="/img/1828.png"
-                        width={6}
-                        height={6}
+                        src="/img/eli28.svg"
+                        width={45}
+                        height={45}
                         alt="Profile"
-                        className="w-16 h-16 ml-10 rounded-full object-cover"
+                        className="w-16 h-16 ml-4 rounded-full object-cover"
                     />
-                    <div className="pl-[2px]">
-                        <h1 className="text-xl font-bold">Gamarrita crece</h1>
-                        <div className="flex flex-row gap-4">
-                            <p className="text-sm mt-2">ID: 62511839</p>
-                            <span className="text-xs bg-green-800 text-white px-2 py-0 rounded-full mt-2 inline-block">Verified</span>
+                    <div className="pl-2">
+                        <h1 className="text-[24px] font-bold">Gamarrita Crece</h1>
+                        <div className="flex flex-row gap-6">
+                            <p className="text-md font-bold">ID: 62511839</p>
+                            <button className="text-sm font-bold bg-green-600 text-white rounded-md px-2 py-0">Verified</button>
                         </div>
                     </div>
-                    <button className="absolute right-4 pt-10">
+                    {/* <button className="absolute right-4 pt-2">
                         <ChevronRight className="text-white w-6 h-6" />
-                    </button>
+                    </button> */}
                 </div>
                 <div className="p-6">
                     <Section title="Wallet">
@@ -56,7 +56,7 @@ export default function Page() {
                     </Section>
                 </div>
             </div>
-        </div>
+       
     )
 }
 

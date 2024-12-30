@@ -1,6 +1,6 @@
 'use client'
 
-import Confirm2 from "./confir2";
+import Confirm2 from "./FinalConfirmation";
 
 export default function Home() {
   return (
