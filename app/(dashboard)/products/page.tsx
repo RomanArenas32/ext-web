@@ -13,7 +13,7 @@ export default function Page() {
     
     return (
         <div className="overflow-hidden shadow-lg">
-            <Header text="Av. Angelica Gamarra 358" link="/" />
+            <Header className="w-full" text="Av. Angelica Gamarra 358" link="/" />
             <Separator />
             <div className="flex flex-row items-center gap-8 p-4 justify-between">
                 <RoleSwitch role={role} onRoleChange={setRole} />

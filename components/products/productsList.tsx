@@ -75,11 +75,11 @@ export default function ProductList({ products }: { products: Product[] }) {
                   Ver más
                 </Button>
                 </Link>
-                <div className="text-3xl font-bold flex items-baseline pt-[20px] gap-x-1">
-                  <span className="text-[22px] text-black text-muted-foreground">
+                <div className="text-[20px] font-bold flex items-baseline pt-[20px] gap-x-1">
+                  <span className="text-[18px] text-black text-muted-foreground">
                     S/
                   </span>
-                  <span>{product.precio}</span>
+                  <span>{product.precio}.00</span>
                 </div>
               </div>
             </div>

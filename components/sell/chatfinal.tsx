@@ -5,10 +5,10 @@ import Link from 'next/link';
 
 const ChatKeyboard = () => {
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded-lg py-10 shadow-md h-[900px] flex flex-col">
+    <div className="max-w-md mx-auto p-4 bg-white rounded-lg py-10 shadow-md h-[560px] flex flex-col">
       {/* Header */}
       <div className="flex items-center mb-8">
-      <Link href="/FinalConfirmation">
+      <Link href="/confirmation2">
         <button>
           <ArrowLeft className="w-6 h-6 text-gray-600" />
         </button>
@@ -83,14 +83,6 @@ const ChatKeyboard = () => {
         </button>
       </div>
       <div>
-      <Image
-  src="/img/32.svg"
-  width={50}
-  height={50}
-  alt="token background"
-  className="w-full pt-4 rounded-b-3xl"
-/>
-
       </div>
     </div>
   );

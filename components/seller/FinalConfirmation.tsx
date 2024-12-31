@@ -8,17 +8,19 @@ export default function FinalConfirmation() {
   
     <div className="max-w-md mx-auto rounded-b-2xl space-y-6">
     {/* Header */}
-    <div className="bg-green-800 text-white rounded-t-2xl p-6 flex items-center justify-between relative">
+    <div className=" text-black rounded-t-2xl p-6 flex items-center pt-10 justify-between relative">
+      <Link href="/confirmation2/succesSell">
       <button className="absolute left-4">
-        <ChevronLeft className="text-white w-6 h-6" />
+        <ChevronLeft className="text-black w-6 h-6" />
       </button>
       <h1 className="text-lg font-bold pl-[130px]">Confirmación</h1>
+      </Link>
     </div>
 
     {/* Countdown */}
     <div className="px-6 py-4">
       <p className="text-sm font-bold text-gray-700">
-        La compra se cancela en <span className="text-orange-500">5:00:48s</span>
+        La compra se cancela en <span className="text-orange-500"> 5:00:48s</span>
       </p>
     </div>
 
@@ -65,29 +67,25 @@ export default function FinalConfirmation() {
       </div>
     </div>
 
-    {/* Alert Message */}
-    <div className="mx-6 py-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-3xl mt-4">
-      <div className="flex items-start px-6 gap-2">
-        <AlertTriangle className="text-yellow-500 w-8 h-8" />
-        <p className="text-sm font-bold text-gray-700">
-          <span className="font-bold text-red-500">ATENCIÓN:</span> Si cancelas el pedido antes de la entrega se te cobrará una comisión.
-        </p>
-      </div>
-    </div>
-
     {/* Buttons */}
-    <div className="px-6 py-4 flex mx-8 flex-col gap-4">
+    <div className="px-6 flex mx-8 flex-col gap-4">
+
+    <Link href="/confirmation2/succesSell">
       <button
-        className="bg-green-600 text-white py-3 px-4 rounded-3xl text-center font-bold cursor-not-allowed"
+        className="bg-green-600 text-white py-3 w-full px-4 rounded-3xl text-center font-bold cursor-not-allowed"
         disabled
-      >
+        >
         Producto recibido
       </button>
+        </Link>
+        </div>
+        <div className="px-6 pb-4 flex mx-8 flex-col gap-4">
       <button
         className="bg-gray-300 text-black py-3 px-4 rounded-3xl text-center font-bold"
       >
         Cancelar
       </button>
+
     </div>
   </div>
 

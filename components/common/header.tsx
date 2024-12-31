@@ -7,20 +7,25 @@ interface HeaderProps {
     text?: string;
     link?: string;
     button?: any;
+    className?: any;
 }
 
 export const Header = ({ text, link, button }: HeaderProps) => {
     return (
-        <header className="bg-white h-[56px] flex flex-row items-center w-full p-6">
+        <header className="bg-white h-[86px] flex flex-row items-center w-fulls relative">
             <Link href={link || "/"}>
-                <button className="items-center flex justify-center">
+                <button className="items-center flex justify-center absolute left-6">
                     <ChevronLeft className="text-[#12332A]" />
                 </button>
             </Link>
-            <div className="w-full text-center">
-                <h1 className="text-[16px]">{text || ""}</h1>
+            <div className="w-full">
+            <h1 className="text-[18px] text-nowrap font-bold absolute left-1/2 transform -translate-x-1/2">{text || ""}</h1>
             </div>
-            {button && <Button {...button}/>}
-        </header>
+            {button && (
+        <div className="absolute right-6">
+            <Button {...button} />
+        </div>
+    )}
+</header>
     )
 }

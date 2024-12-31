@@ -12,7 +12,7 @@ export default function Confirmation() {
           <button className="absolute left-4">
             <ChevronLeft className="text-white w-6 h-6" />
           </button>
-          <h1 className="text-lg font-bold pl-[130px]">Confirmación</h1>
+          <h1 className="text-lg font-bold pl-[130px]">Confirmaci</h1>
         </div>
 
         {/* Countdown */}

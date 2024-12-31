@@ -20,7 +20,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState('Gris')
   const [selectedSize, setSelectedSize] = useState('S')
-  const [quantity, setQuantity] = useState(58)
+  const [quantity, setQuantity] = useState(23)
   const router = useRouter()
 
   const headerButtonProps = {
@@ -50,12 +50,12 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen rounded-2xl overflow-hidden">
-      <Header text="Producto" link="/products" button={headerButtonProps} />
+    <div className="max-w-md bg-white min-h-screen rounded-2xl overflow-hidden">
+      <Header className="pt-4" text="Producto" link="/products" button={headerButtonProps} />
       <div className="pt-8 px-6">
         <div className="flex items-center gap-2 font-bold text-sm">
           <span className="text-gray-600">Precio por mayor</span>
-          <span>S/ {product?.precio || "3.40"}</span>
+          <span>S/. {product?.precio || "3.60"}.00</span>
           <span className="text-gray-500 ml-auto text-xs">00:27s</span>
         </div>
       </div>
@@ -120,7 +120,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
           <span className="text-3xl font-bold">{quantity} uni</span>
         </div>
         <div className="text-xs font-bold text-gray-500 mt-2">Min. 3 uni</div>
-        <div className="text-xs font-bold  text-green-600 mt-1">Disponible: 1,390.84 PEN</div>
+        <div className="text-xs font-bold  text-green-600 mt-1">Disponible: 240 unidades</div>
       </div>
       <div className="mt-8 px-6">
         <div className="flex justify-between items-center py-4 border-t border-b">
