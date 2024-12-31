@@ -18,13 +18,13 @@ export const Header = ({ text, link, button }: HeaderProps) => {
                 </button>
             </Link>
             <div className="w-full">
-            <h1 className="text-[18px] text-nowrap font-bold absolute left-1/2 transform -translate-x-1/2">{text || ""}</h1>
+                <h1 className="text-[18px] text-nowrap font-bold absolute left-1/2 transform -translate-x-1/2">{text || ""}</h1>
             </div>
             {button && (
-        <div className="absolute right-6">
-            <Button {...button} />
-        </div>
-    )}
-</header>
+                <div className="absolute right-6">
+                    <Button {...button} />
+                </div>
+            )}
+        </header>
     )
 }
