@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { getProductById } from '@/actions/products';
 import { Product } from '@/components/products/productsList';
+import { Header } from '@/components/common/header';
 
 
 
@@ -29,14 +30,8 @@ export default function Page() {
   }, []);
   return (
     <div className="max-w-md mx-auto bg-white min-h-screen rounded-2xl overflow-hidden">
-        <h1>DETAIL PRODUCT!!!!!!!!!</h1>
-      <div className="bg-green-900 text-white p-6 flex gap-4 pb-10 pt-[60px]">
-        <Link href='/products'>
-          <ChevronLeft className="text-white w-6 h-6" />
-        </Link>
-        <h1 className="text-[20px] pl-[84px] justify-center font-bold">Producto</h1>
-        <button className="text-sm font-bold bg-green-600 text-white rounded-full px-4 ml-6 py-2">Ver detalle</button>
-      </div>
+       <Header text={'Detalle de producto'} link={`/products/${product?._id}`} />
+      
       <div className="pt-8 px-6">
         <div className="flex items-center gap-2 font-bold text-sm">
           <span className="text-gray-600">Precio por mayor</span>

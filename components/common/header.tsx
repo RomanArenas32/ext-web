@@ -7,7 +7,6 @@ interface HeaderProps {
     text?: string;
     link?: string;
     button?: any;
-    className?: any;
 }
 
 export const Header = ({ text, link, button }: HeaderProps) => {
