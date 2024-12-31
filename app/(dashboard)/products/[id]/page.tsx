@@ -30,7 +30,7 @@ export default function Page() {
 
   return (
     <>
-      {product ? <ProductView product={product} /> : <div>Loading...</div>}
+      {product ? <ProductView product={product} /> : <div className='w-full min-h-[100vh] grid place-items-center'>Loading...</div>}
     </>
   );
 };

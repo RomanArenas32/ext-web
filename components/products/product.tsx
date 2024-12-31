@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { Header } from '../common/header'
-import { useRouter } from 'next/navigation'
 import { Confirmation } from './confirmProduct'
 import FromDrawer from "../ui/form-drawer" 
 
@@ -21,13 +20,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
   const [selectedColor, setSelectedColor] = useState('Gris')
   const [selectedSize, setSelectedSize] = useState('S')
   const [quantity, setQuantity] = useState(23)
-  const router = useRouter()
 
-  const headerButtonProps = {
-    onClick: () => router.push(`/products/details/${product._id}`),
-    className: "border border-[#B0B0B0] rounded-2xl bg-white text-[#B0B0B0] text-[12px]",
-    children: "Ver detalles",
-  }
 
   const handleColorSelect = (color: string) => {
     setSelectedColor(color)
@@ -51,7 +44,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
 
   return (
     <div className="max-w-md bg-white min-h-screen rounded-2xl overflow-hidden">
-      <Header className="pt-4" text="Producto" link="/products" button={headerButtonProps} />
+      <Header text={"Confirmación"} link={"/products"}/>
       <div className="pt-8 px-6">
         <div className="flex items-center gap-2 font-bold text-sm">
           <span className="text-gray-600">Precio por mayor</span>

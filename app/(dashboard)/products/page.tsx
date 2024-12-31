@@ -13,13 +13,13 @@ export default function Page() {
     
     return (
         <div className="overflow-hidden shadow-lg">
-            <Header className="w-full" text="Av. Angelica Gamarra 358" link="/" />
+            <Header text={"Av. Angelica Gamarra 358"} />
             <Separator />
             <div className="flex flex-row items-center gap-8 p-4 justify-between">
                 <RoleSwitch role={role} onRoleChange={setRole} />
             </div>
 
-            {role === "product" ? <ProductHome /> : <SellerHome />}
+            {role === "product" && <ProductHome />}
         </div>
     );
 }
