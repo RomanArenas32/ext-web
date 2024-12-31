@@ -15,14 +15,21 @@ interface ProductViewProps {
   product: Product;
 }
 
+type Color = "Gris" | "Amarillo" | "Verde";
+
 const ProductView: React.FC<ProductViewProps> = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedColor, setSelectedColor] = useState('Gris')
+  const [selectedColor, setSelectedColor] = useState<Color>('Gris')
   const [selectedSize, setSelectedSize] = useState('S')
   const [quantity, setQuantity] = useState(23)
 
+  const colorImageMap: Record<Color, string> = {
+    Gris: "/img/pologris.jpg",
+    Amarillo: "/img/poloama.jpg",
+    Verde: "/img/polover.jpg",
+  };
 
-  const handleColorSelect = (color: string) => {
+  const handleColorSelect = (color: Color) => {
     setSelectedColor(color)
   }
 
@@ -42,6 +49,8 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
     setIsModalOpen(true)
   }
 
+
+
   return (
     <div className="max-w-md bg-white min-h-screen rounded-2xl overflow-hidden">
       <Header text={"Confirmación"} link={"/products"}/>
@@ -57,8 +66,8 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
         <div className="flex mt-4 ml-10 gap-10">
           <div className="relative">
             <img
-              src="/img/camisero.jpg"
-              alt="Producto"
+              src={colorImageMap[selectedColor]}
+              alt={`Producto ${selectedColor}`}
               className="h-24 w-24 object-cover"
             />
           </div>

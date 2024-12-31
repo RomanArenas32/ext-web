@@ -30,7 +30,7 @@ export default function ProductList({ products }: { products: Product[] }) {
             <div className="flex items-start gap-2">
               <div className="flex-shrink-0">
                 <Image
-                  src="/img/camisero.jpg"
+                  src="/img/pologris.jpg"
                   alt={`${product.nombre} product`}
                   width={120}
                   height={120}
