@@ -9,7 +9,7 @@ export default function FinalConfirmation() {
     <div className="max-w-md mx-auto rounded-b-2xl space-y-6">
     {/* Header */}
     <div className=" text-black rounded-t-2xl p-6 flex items-center pt-10 justify-between relative">
-      <Link href="/confirmation2/succesSell">
+      <Link href="">
       <button className="absolute left-4">
         <ChevronLeft className="text-black w-6 h-6" />
       </button>
@@ -69,7 +69,6 @@ export default function FinalConfirmation() {
 
     {/* Buttons */}
     <div className="px-6 flex mx-8 flex-col gap-4">
-
     <Link href="/confirmation2/succesSell">
       <button
         className="bg-green-600 text-white py-3 w-full px-4 rounded-3xl text-center font-bold cursor-not-allowed"
