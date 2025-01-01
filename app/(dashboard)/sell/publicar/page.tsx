@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createProduct } from '@/actions/products'
 import { TermsDrawer } from '@/components/sell/terms-drawer'
-import { Drawer } from '@/components/ui/drawer'
+import { Dialog } from '@/components/ui/dialog'
 
 
 const productSchema = z.object({
@@ -250,13 +250,13 @@ export default function Page() {
         </div>
       )}
       {showDrawer && (
-        <Drawer open={showDrawer} onOpenChange={setShowDrawer} direction="bottom">
+        <Dialog open={showDrawer} onOpenChange={setShowDrawer}>
           <TermsDrawer
             open={showDrawer}
             onOpenChange={setShowDrawer}
             onAgree={handleAgree}
           />
-        </Drawer>
+        </Dialog>
       )}
     </>
   )

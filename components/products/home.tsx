@@ -6,6 +6,7 @@ import { Input } from '../ui/input'
 import ProductList from './productsList'
 import { useEffect, useState } from 'react'
 import { getProducts } from '@/actions/products'
+import { Search } from "lucide-react"
 
 
 
@@ -106,7 +107,7 @@ export default function ProductCategories() {
         <CarouselNext className="right-2" />
       </Carousel>
       <div className='flex relative justify-center mx-4 ml-[14px] w-[400px]'>
-        <Input placeholder="Buscar productos" className="w-full rounded-lg ml-22 mt-4 max-w-[462px]" />
+        <Input placeholder="Buscar productos" className="w-full rounded-lg ml-22 mt-4 max-w-[327px]" icon={<Search/>}/>
       </div>
       <ProductList products={products}/>
     </>
