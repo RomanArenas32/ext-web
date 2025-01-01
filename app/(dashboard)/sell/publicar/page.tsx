@@ -16,6 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { createProduct } from '@/actions/products'
 import { TermsDrawer } from '@/components/sell/terms-drawer'
 import { Dialog } from '@/components/ui/dialog'
+import { Header } from '@/components/common/header'
 
 
 const productSchema = z.object({
@@ -78,14 +79,7 @@ export default function Page() {
 
       {showForm && (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Publicar aviso</h2>
-            <Link href={"/sell"}>
-              <Button variant="ghost" size="icon">
-                <X className="w-5 h-5" />
-              </Button>
-            </Link>
-          </div>
+          <Header text={"Publicar aviso"} link={'/sell'} />
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -250,13 +244,13 @@ export default function Page() {
         </div>
       )}
       {showDrawer && (
-        <Dialog open={showDrawer} onOpenChange={setShowDrawer}>
+        <div>
           <TermsDrawer
             open={showDrawer}
             onOpenChange={setShowDrawer}
             onAgree={handleAgree}
           />
-        </Dialog>
+        </div>
       )}
     </>
   )
