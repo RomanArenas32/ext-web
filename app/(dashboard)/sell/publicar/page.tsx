@@ -20,11 +20,11 @@ import { Drawer } from '@/components/ui/drawer'
 
 const productSchema = z.object({
   img: z.string().url(),
-  nombre: z.string().min(1, "El nombre es requerido"),
-  precio: z.number().positive("El precio debe ser positivo"),
-  categoria: z.string().min(1, "La categoría es requerida"),
-  descripcion: z.string().min(1, "La descripción es requerida"),
-  unidades: z.number().int().positive("Las unidades deben ser un número positivo"),
+  name: z.string().min(1, "El nombre es requerido"),
+  price: z.number().positive("El precio debe ser positivo"),
+  category: z.string().min(1, "La categoría es requerida"),
+  description: z.string().min(1, "La descripción es requerida"),
+  unities: z.number().int().positive("Las unidades deben ser un número positivo"),
   color: z.string().min(1, "El color es requerido"),
 })
 
@@ -39,11 +39,11 @@ export default function Page() {
     resolver: zodResolver(productSchema),
     defaultValues: {
       img: '',
-      nombre: '',
-      precio: 0,
-      categoria: '',
-      descripcion: '',
-      unidades: 0,
+      name: '',
+      price: 0,
+      category: '',
+      description: '',
+      unities: 0,
       color: '',
     },
   })
@@ -105,7 +105,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="nombre"
+                name="name"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Nombre producto</FormLabel>
@@ -119,7 +119,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="precio"
+                name="price"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Precio</FormLabel>
@@ -151,7 +151,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="categoria"
+                name="category"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Categoría</FormLabel>
@@ -174,7 +174,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="descripcion"
+                name="description"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Descripción</FormLabel>
@@ -188,7 +188,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="unidades"
+                name="unities"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Unidades máximas</FormLabel>

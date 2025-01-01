@@ -29,11 +29,11 @@ export async function getProducts() {
 export async function createProduct(formData: FormData) {
   const validatedFields = productSchema.safeParse({
     img: formData.get('img'),
-    nombre: formData.get('nombre'),
-    precio: Number(formData.get('precio')),
-    categoria: formData.get('categoria'),
-    descripcion: formData.get('descripcion'),
-    unidades: Number(formData.get('unidades')),
+    nombre: formData.get('name'),
+    precio: Number(formData.get('price')),
+    categoria: formData.get('category'),
+    descripcion: formData.get('description'),
+    unidades: Number(formData.get('unities')),
     color: formData.get('color'),
   })
 
