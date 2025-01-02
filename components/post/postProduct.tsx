@@ -3,8 +3,6 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useState } from 'react'
-import { X } from 'lucide-react'
-import Link from 'next/link'
 import { z } from 'zod'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
@@ -15,7 +13,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createProduct } from '@/actions/products'
 import { TermsDrawer } from '@/components/sell/terms-drawer'
-import { Dialog } from '@/components/ui/dialog'
 import { Header } from '@/components/common/header'
 
 
@@ -31,7 +28,7 @@ const productSchema = z.object({
 
 type ProductFormValues = z.infer<typeof productSchema>
 
-export default function Page() {
+export default function ProductPost() {
   const router = useRouter()
   const [showForm, setShowForm] = useState(false)
   const [showDrawer, setShowDrawer] = useState(true)
@@ -79,8 +76,6 @@ export default function Page() {
 
       {showForm && (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-6">
-          <Header text={"Publicar aviso"} link={'/sell'} />
-
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -116,7 +111,7 @@ export default function Page() {
                 name="price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Precio</FormLabel>
+                    <FormLabel>Precio en soles (PEN)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"

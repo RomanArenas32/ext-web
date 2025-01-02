@@ -69,7 +69,7 @@ const UserProfile = () => {
 
       {/* Main Button */}
       <div className="text-center">
-        <Link href={`/sell/publicar`}>
+        <Link href={`/sell/post`}>
           <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700">
             Publicar aviso
           </button>
