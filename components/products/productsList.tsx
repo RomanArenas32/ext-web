@@ -18,7 +18,6 @@ export interface Product {
 }
 
 export default function ProductList({ products }: { products: Product[] }) {
-  console.log(products);
   return (
     <div className="w-full max-w-3xl mx-auto space-y-4 p-4">
       {products.map((product, index) => (

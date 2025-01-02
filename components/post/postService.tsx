@@ -21,12 +21,13 @@ const serviceSchema = z.object({
   description: z.string().min(1, "La descripción es requerida"),
 })
 
-type ProductFormValues = z.infer<typeof serviceSchema>
+type ServiceFormValues = z.infer<typeof serviceSchema>
 
 export default function ServicePost() {
+
   const router = useRouter()
 
-  const form = useForm<ProductFormValues>({
+  const form = useForm<ServiceFormValues>({
     resolver: zodResolver(serviceSchema),
     defaultValues: {
       img: '',
@@ -36,25 +37,19 @@ export default function ServicePost() {
       description: '',
     },
   })
-
-  async function onSubmit(values: ProductFormValues) {
-    console.log("values", values)
+  async function onSubmit(values: ServiceFormValues) {
     try {
-      const formData = new FormData();
-      Object.entries(values).forEach(([key, value]) => {
-        formData.append(key, value.toString());
-      });
-      console.log(formData)
-      const response = await createService(formData);
+     
+      const response = await createService(values);
+      console.log("Response", response);
       if (response.success) {
-        toast.success("Service has created")
+        toast.success("El servicio ha sido creado");
       }
       setTimeout(() => {
-        router.push("/sell")
+        router.push("/sell");
       }, 2000);
-
     } catch (error) {
-      toast.error("Error creating service")
+      toast.error("Error al crear el servicio");
     }
   }
 

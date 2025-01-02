@@ -11,8 +11,6 @@ import { useState } from "react";
 export default function Page() {
     const [tab, setTab] = useState<"product" | "service">("product");
     const { user } = useUser();
-
-    console.log("User", user);
     return (
         <div className="overflow-hidden shadow-lg">
             <Header text={`Publicar aviso`} link="/sell" />

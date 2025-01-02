@@ -79,7 +79,6 @@ export default function Page() {
     }
     fetchProducts()
   }, [])
-    console.log("User", user);
     return (
         <div className="overflow-hidden shadow-lg">
             <Header text={`${user.address}`} link="/" />

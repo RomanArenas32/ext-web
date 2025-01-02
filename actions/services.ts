@@ -12,7 +12,6 @@ export const serviceSchema = z.object({
 })
 
 export async function getServices() {
-  console.log(API_URL)
   try {
     const response = await fetch(`https://ext-server.onrender.com/services`, {
       method: "GET",
@@ -24,28 +23,15 @@ export async function getServices() {
   }
 }
 
-export async function createService(formData: FormData) {
-  const validatedFields = serviceSchema.safeParse({
-    img: formData.get('img'),
-    nombre: formData.get('name'),
-    precio: Number(formData.get('price')),
-    categoria: formData.get('category'),
-    descripcion: formData.get('description'),
-  })
-
-  if (!validatedFields.success) {
-    return { error: validatedFields.error.flatten().fieldErrors }
-  }
-
-  const productData = validatedFields.data
-
+export async function createService(values: any) {
+console.log(values )
   try {
     const response = await fetch('https://ext-server.onrender.com/services', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(productData),
+      body: JSON.stringify(values),
     })
     console.log(response)
 
@@ -57,13 +43,11 @@ export async function createService(formData: FormData) {
     return { success: true, data: responseData }
   } catch (error) {
     console.error('Error en la solicitud POST:', error)
-    return { error: 'Error al crear el producto' }
+    return { error: 'Error al crear el Servicio' }
   }
 }
 
 export async function getServiceById(_id: string) {
-  console.log("Obteniendo servicio con ID:", _id);
-
   try {
     const response = await fetch(`https://ext-server.onrender.com/services/${_id}`, {
       method: 'GET',

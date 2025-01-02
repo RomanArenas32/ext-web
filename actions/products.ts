@@ -14,7 +14,6 @@ export const productSchema = z.object({
 })
 
 export async function getProducts() {
-  console.log(API_URL)
   try {
     const response = await fetch(`https://ext-server.onrender.com/products`, {
       method: "GET",
@@ -26,22 +25,7 @@ export async function getProducts() {
   }
 }
 
-export async function createProduct(formData: FormData) {
-  const validatedFields = productSchema.safeParse({
-    img: formData.get('img'),
-    nombre: formData.get('name'),
-    precio: Number(formData.get('price')),
-    categoria: formData.get('category'),
-    descripcion: formData.get('description'),
-    unidades: Number(formData.get('unities')),
-    color: formData.get('color'),
-  })
-
-  if (!validatedFields.success) {
-    return { error: validatedFields.error.flatten().fieldErrors }
-  }
-
-  const productData = validatedFields.data
+export async function createProduct(values: any) {
 
   try {
     const response = await fetch('https://ext-server.onrender.com/products', {
@@ -49,7 +33,7 @@ export async function createProduct(formData: FormData) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(productData),
+      body: JSON.stringify(values),
     })
     console.log(response)
 
@@ -66,7 +50,6 @@ export async function createProduct(formData: FormData) {
 }
 
 export async function getProductById(_id: string) {
-  console.log("Obteniendo producto con ID:", _id);
 
   try {
     const response = await fetch(`https://ext-server.onrender.com/products/${_id}`, {
@@ -79,7 +62,6 @@ export async function getProductById(_id: string) {
     if (!response.ok) {
       throw new Error(`Error al obtener el producto: ${response.statusText}`);
     }
-    console.log(response)
     const productData = await response.json();
     return productData;
   } catch (error) {

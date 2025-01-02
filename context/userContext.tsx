@@ -9,6 +9,7 @@ interface User {
   apellido: string;
   email: string;
   role: string;
+  age: number;
   address: string;
 }
 
@@ -16,6 +17,7 @@ const mockUser: User = {
   id: 1,
   nombre: "Juan",
   marketName: "Juan's Market",
+  age: 25,
   apellido: "Pérez",
   email: "juan.perez@example.com",
   role: "user",

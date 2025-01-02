@@ -47,12 +47,7 @@ export default function ProductPost() {
 
   async function onSubmit(values: ProductFormValues) {
     try {
-      const formData = new FormData();
-      Object.entries(values).forEach(([key, value]) => {
-        formData.append(key, value.toString());
-      });
-      console.log(formData)
-      const response = await createProduct(formData);
+      const response = await createProduct(values);
       if (response.success) {
         toast.success("Producto creado correctamente")
       }
