@@ -25,7 +25,7 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
                 </button>
             </Link>
             <div className="w-full">
-                <h1 className="text-[18px] text-nowrap font-bold absolute left-1/2 transform -translate-x-1/2">Confirmacion</h1>
+                <h1 className="text-[18px] text-nowrap font-bold absolute left-1/2 transform -translate-x-1/2">Confirmación</h1>
             </div>
         </header>
         <Separator />
@@ -37,22 +37,43 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
       </div>
 
       {/* Store Information */}
-      <div className="px-6 py-4 bg-green-50 rounded-lg flex items-center justify-between">
-        <div>
-          <p className="text-green-700 font-semibold">Gladys .C <span className="text-green-500">✔</span></p>
-          <p className="text-sm font-bold text-gray-700">Contacto: Gladys Canales Tejeda </p>
-        </div>
-        <div className="relative inline-block">
-          <Link href={"/chat"}>
-            <button className="flex items-center bg-green-600 text-white px-4 py-2 font-bold rounded-full text-sm">
-              Chat <MessageSquareMore className="w-4 h-4 ml-2" />
-            </button>
-          </Link>
-          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-            1
-          </span>
-        </div>
-      </div>
+      <div className="flex items-center px-6 py-4 rounded-lg bg-green-50 shadow-md">
+  {/* Avatar */}
+  <div className="flex items-center justify-center h-10 w-10 bg-green-600 text-white rounded-full font-bold text-[16px]">
+    K
+  </div>
+
+  {/* Información del negocio */}
+  <div className="ml-4 flex flex-col">
+    <div className="flex items-center">
+      <h1 className="text-lg font-semibold text-gray-800">KellyFashion</h1>
+      <Image
+        src="/icon/check.svg"
+        alt="green check"
+        width={18}
+        height={18}
+        className="ml-2"
+      />
+    </div>
+    <span className="text-sm text-gray-600">Kelly Castellanos Tejeda</span>
+  </div>
+
+  {/* Botón de chat */}
+  <div className="relative ml-auto">
+    <Link href={"/chat"}>
+      <button className="flex items-center bg-green-700 text-white px-4 py-2 font-medium rounded-full text-sm hover:bg-green-800">
+        Chat
+        <MessageSquareMore className="w-4 h-4 ml-2" />
+      </button>
+    </Link>
+    {/* Indicador de notificaciones */}
+    <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+      1
+    </span>
+  </div>
+</div>
+
+      
 
       {/* Product Details */}
       <div className="px-6 py-4">

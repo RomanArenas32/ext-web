@@ -59,7 +59,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
       <div className="pt-8 px-6">
         <div className="flex items-center gap-2 font-bold text-sm">
           <span className="text-gray-600">Precio por mayor</span>
-          <span>S/. {product?.precio || "3.60"}.00</span>
+          <span>S/. {product?.precio || "3.20"}.00</span>
           <span className="text-gray-500 ml-auto text-xs">00:27s</span>
         </div>
       </div>
