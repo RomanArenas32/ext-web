@@ -15,11 +15,11 @@ const ChatKeyboard = () => {
         </Link>
         <div className="flex ml-4 gap-2">
           <div className="h-12 w-12 bg-green-600 text-white rounded-full flex items-center justify-center text-[20px] font-bold">
-            G
+            K
           </div>
           <div>
             <div className="flex items-center gap-1">
-              <h1 className="text-[18px] font-bold">Gladys .C</h1>
+              <h1 className="text-[18px] font-bold">KellyFashion</h1>
               <span className="text-green-500 text-lg ml-2">✔</span>
             </div>
             <p className="text-[14px] font-bold text-gray-500">Last seen 1 hour(s) ago</p>
