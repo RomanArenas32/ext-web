@@ -1,8 +1,8 @@
 "use client";
 
 import { Header } from "@/components/common/header";
-import ProductHome from "@/components/products/home";
-import SellerHome from "@/components/seller/home";
+import ProductPost from "@/components/post/postProduct";
+import ServicePost from "@/components/post/postService";
 import { RoleSwitch } from "@/components/ui/role-swich";
 import { Separator } from "@/components/ui/separator";
 import { useUser } from "@/context/userContext";
@@ -15,13 +15,13 @@ export default function Page() {
     console.log("User", user);
     return (
         <div className="overflow-hidden shadow-lg">
-            <Header text={`${user.address}`} link="/" />
+            <Header text={`Publicar aviso`} link="/sell" />
             <Separator />
             <div className="flex flex-row items-center gap-8 p-4 justify-between">
                 <RoleSwitch tab={tab} onRoleChange={setTab} />
             </div>
 
-            {tab === "product" ? <ProductHome /> : <SellerHome />}
+            {tab === "product" ? <ProductPost /> : <ServicePost />}
         </div>
     );
 }

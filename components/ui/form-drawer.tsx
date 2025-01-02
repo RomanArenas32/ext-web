@@ -1,6 +1,6 @@
 "use client";
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 
 import React from "react";
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DrawerTrigger } from "./drawer";
@@ -13,20 +13,18 @@ import { VisuallyHidden } from "@reach/visually-hidden";
 interface FormDrawerProps {
   trigger: React.ReactNode;
   children: React.ReactNode;
-  header: string;
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-const FromDrawer: React.FC<FormDrawerProps> = ({ trigger, children, header, isOpen, onOpenChange }) => {
+const FromDrawer: React.FC<FormDrawerProps> = ({ trigger, children, isOpen, onOpenChange }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   if (isDesktop) {
     return (
       <Sheet open={isOpen} onOpenChange={onOpenChange}>
         <SheetTrigger asChild>{trigger}</SheetTrigger>
         <SheetContent className="flex flex-col p-0 gap-0 md:max-w-[538px] overflow-y-auto">
-          <SheetHeader className="space-y-0 px-6 py-4">
-            <SheetTitle>{header}</SheetTitle>
+          <SheetHeader >
             <VisuallyHidden>
               <DrawerDescription>description</DrawerDescription>
             </VisuallyHidden>
@@ -38,15 +36,15 @@ const FromDrawer: React.FC<FormDrawerProps> = ({ trigger, children, header, isOp
   } else {
     return (
       <Drawer open={isOpen} onOpenChange={onOpenChange}>
-        <DrawerTrigger asChild>{trigger}</DrawerTrigger>
+        <DrawerTrigger asChild >{trigger}</DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>{header}</DrawerTitle>
             <VisuallyHidden>
+              <DrawerTitle>Title</DrawerTitle>
               <DrawerDescription>description</DrawerDescription>
             </VisuallyHidden>
           </DrawerHeader>
-          <div className="h-[92vh] px-6 py-4">{children}</div>
+          <div className="h-[100vh] px-6 pt-0 overflow-y-auto">{children}</div>
         </DrawerContent>
       </Drawer>
     );

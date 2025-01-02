@@ -1,10 +1,13 @@
 'use client'
 
-import { MessageSquareMore, AlertTriangle, ClipboardCheck } from 'lucide-react'
+import { MessageSquareMore, AlertTriangle, ClipboardCheck, ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
+import { Separator } from '../ui/separator'
+import Image from 'next/image'
 
 interface ConfirmationProps {
   productDetails: {
+    _id: string
     color: string
     size: string
     quantity: number
@@ -15,6 +18,17 @@ interface ConfirmationProps {
 export function Confirmation({ productDetails }: ConfirmationProps) {
   return (
     <div className="max-w-md mx-auto rounded-b-2xl space-y-6">
+       <header className="bg-white  flex flex-row items-center w-fulls relative p-4">
+            <Link href={"/products"}>
+                <button className="items-center flex justify-center absolute left-6">
+                    <ChevronLeft className="text-[#12332A]" />
+                </button>
+            </Link>
+            <div className="w-full">
+                <h1 className="text-[18px] text-nowrap font-bold absolute left-1/2 transform -translate-x-1/2">Confirmacion</h1>
+            </div>
+        </header>
+        <Separator />
       {/* Countdown */}
       <div className="px-6 py-4">
         <p className="text-sm font-bold text-gray-700">
@@ -56,9 +70,11 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
             </p>
             <p className="text-lg font-bold text-gray-900">Total: S/ {productDetails.totalPrice.toFixed(2)}</p>
           </div>
-          <img
-            src="/img/camisero.jpg"
+          <Image
+            src="/img/poloama.jpg"
             alt="T-Shirt"
+            width={24}
+            height={24}
             className="w-24 h-24 object-cover"
           />
         </div>

@@ -19,7 +19,7 @@ export interface Product {
 
 
 
-export default function ProductList({ products }: { products: Product[] }) {
+export default function ServicesList({ products }: { products: Product[] }) {
 
   console.log(products)
   return (

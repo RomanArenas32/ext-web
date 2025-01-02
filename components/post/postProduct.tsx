@@ -3,8 +3,6 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useState } from 'react'
-import { X } from 'lucide-react'
-import Link from 'next/link'
 import { z } from 'zod'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
@@ -15,22 +13,22 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createProduct } from '@/actions/products'
 import { TermsDrawer } from '@/components/sell/terms-drawer'
-import { Drawer } from '@/components/ui/drawer'
+import { Header } from '@/components/common/header'
 
 
 const productSchema = z.object({
   img: z.string().url(),
-  nombre: z.string().min(1, "El nombre es requerido"),
-  precio: z.number().positive("El precio debe ser positivo"),
-  categoria: z.string().min(1, "La categoría es requerida"),
-  descripcion: z.string().min(1, "La descripción es requerida"),
-  unidades: z.number().int().positive("Las unidades deben ser un número positivo"),
+  name: z.string().min(1, "El nombre es requerido"),
+  price: z.number().positive("El precio debe ser positivo"),
+  category: z.string().min(1, "La categoría es requerida"),
+  description: z.string().min(1, "La descripción es requerida"),
+  unities: z.number().int().positive("Las unidades deben ser un número positivo"),
   color: z.string().min(1, "El color es requerido"),
 })
 
 type ProductFormValues = z.infer<typeof productSchema>
 
-export default function Page() {
+export default function ProductPost() {
   const router = useRouter()
   const [showForm, setShowForm] = useState(false)
   const [showDrawer, setShowDrawer] = useState(true)
@@ -39,11 +37,11 @@ export default function Page() {
     resolver: zodResolver(productSchema),
     defaultValues: {
       img: '',
-      nombre: '',
-      precio: 0,
-      categoria: '',
-      descripcion: '',
-      unidades: 0,
+      name: '',
+      price: 0,
+      category: '',
+      description: '',
+      unities: 0,
       color: '',
     },
   })
@@ -78,15 +76,6 @@ export default function Page() {
 
       {showForm && (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Publicar aviso</h2>
-            <Link href={"/sell"}>
-              <Button variant="ghost" size="icon">
-                <X className="w-5 h-5" />
-              </Button>
-            </Link>
-          </div>
-
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -105,7 +94,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="nombre"
+                name="name"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Nombre producto</FormLabel>
@@ -119,10 +108,10 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="precio"
+                name="price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Precio</FormLabel>
+                    <FormLabel>Precio en soles (PEN)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
@@ -151,7 +140,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="categoria"
+                name="category"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Categoría</FormLabel>
@@ -174,7 +163,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="descripcion"
+                name="description"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Descripción</FormLabel>
@@ -188,7 +177,7 @@ export default function Page() {
 
               <FormField
                 control={form.control}
-                name="unidades"
+                name="unities"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Unidades máximas</FormLabel>
@@ -250,13 +239,13 @@ export default function Page() {
         </div>
       )}
       {showDrawer && (
-        <Drawer open={showDrawer} onOpenChange={setShowDrawer} direction="bottom">
+        <div>
           <TermsDrawer
             open={showDrawer}
             onOpenChange={setShowDrawer}
             onAgree={handleAgree}
           />
-        </Drawer>
+        </div>
       )}
     </>
   )

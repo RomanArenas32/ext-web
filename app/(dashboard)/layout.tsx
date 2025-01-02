@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import NavigationFooter from "@/components/common/panelFooter";
+import { UserProvider } from "@/context/userContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-    >
-      <main className="flex-1">{children}</main>
-      <NavigationFooter />
-    </div>
+    <UserProvider>
+      <div
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+      >
+        <main className="flex-1">{children}</main>
+        <NavigationFooter />
+      </div>
+    </UserProvider>
   );
 }

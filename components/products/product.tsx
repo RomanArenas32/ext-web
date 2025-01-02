@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react'
 import { Header } from '../common/header'
-import { useRouter } from 'next/navigation'
 import { Confirmation } from './confirmProduct'
-import FromDrawer from "../ui/form-drawer" 
+import FromDrawer from "../ui/form-drawer"
+import { Separator } from '../ui/separator'
 
 interface Product {
   _id: string;
@@ -16,20 +16,21 @@ interface ProductViewProps {
   product: Product;
 }
 
+type Color = "Gris" | "Amarillo" | "Verde";
+
 const ProductView: React.FC<ProductViewProps> = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedColor, setSelectedColor] = useState('Gris')
+  const [selectedColor, setSelectedColor] = useState<Color>('Gris')
   const [selectedSize, setSelectedSize] = useState('S')
   const [quantity, setQuantity] = useState(23)
-  const router = useRouter()
 
-  const headerButtonProps = {
-    onClick: () => router.push(`/products/details/${product._id}`),
-    className: "border border-[#B0B0B0] rounded-2xl bg-white text-[#B0B0B0] text-[12px]",
-    children: "Ver detalles",
-  }
+  const colorImageMap: Record<Color, string> = {
+    Gris: "/img/pologris.jpg",
+    Amarillo: "/img/poloama.jpg",
+    Verde: "/img/polover.jpg",
+  };
 
-  const handleColorSelect = (color: string) => {
+  const handleColorSelect = (color: Color) => {
     setSelectedColor(color)
   }
 
@@ -49,9 +50,12 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
     setIsModalOpen(true)
   }
 
+
+
   return (
     <div className="max-w-md bg-white min-h-screen rounded-2xl overflow-hidden">
-      <Header className="pt-4" text="Producto" link="/products" button={headerButtonProps} />
+      <Header text={"Producto"} link={"/products"} />
+      <Separator />
       <div className="pt-8 px-6">
         <div className="flex items-center gap-2 font-bold text-sm">
           <span className="text-gray-600">Precio por mayor</span>
@@ -64,21 +68,21 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
         <div className="flex mt-4 ml-10 gap-10">
           <div className="relative">
             <img
-              src="/img/camisero.jpg"
-              alt="Producto"
+              src={colorImageMap[selectedColor]}
+              alt={`Producto ${selectedColor}`}
               className="h-24 w-24 object-cover"
             />
           </div>
           <div className="flex items-center gap-3">
-            <button 
+            <button
               className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Gris' ? 'border-black' : 'border-gray-300'} bg-gray-500`}
               onClick={() => handleColorSelect('Gris')}
             ></button>
-            <button 
+            <button
               className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Amarillo' ? 'border-black' : 'border-gray-300'} bg-yellow-300`}
               onClick={() => handleColorSelect('Amarillo')}
             ></button>
-            <button 
+            <button
               className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Verde' ? 'border-black' : 'border-gray-300'} bg-green-300`}
               onClick={() => handleColorSelect('Verde')}
             ></button>
@@ -88,25 +92,25 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
       <div className="mt-8 px-6">
         <span className="text-sm font-bold">Talla</span>
         <div className="flex gap-3 mt-4">
-          <button 
+          <button
             className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'S' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
             onClick={() => handleSizeSelect('S')}
           >
             S
           </button>
-          <button 
+          <button
             className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'M' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
             onClick={() => handleSizeSelect('M')}
           >
             M
           </button>
-          <button 
+          <button
             className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'L' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
             onClick={() => handleSizeSelect('L')}
           >
             L
           </button>
-          <button 
+          <button
             className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'XL' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
             onClick={() => handleSizeSelect('XL')}
           >
@@ -137,19 +141,20 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
           By proceeding, you've read and agreed to the{' '}
           <a href="#" className="text-green-600 underline">Wanya Emprende ya legal disclaimer</a>.
         </p>
-        <button 
+        <button
           className="w-[80%] flex justify-center items-center bg-green-800 text-white rounded-full py-4 mt-6 mx-8 mb-8 font-bold"
           onClick={openModal}
         >
           Lo quiero ya!
         </button>
       </div>
-      <FromDrawer 
+      <FromDrawer
         isOpen={isModalOpen}
         onOpenChange={setIsModalOpen}
-        header="Confirmación" trigger={undefined}>
+        trigger={undefined}>
         <Confirmation
           productDetails={{
+            _id: product._id,
             color: selectedColor,
             size: selectedSize,
             quantity: quantity,
