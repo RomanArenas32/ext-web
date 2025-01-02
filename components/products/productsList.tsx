@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 
 export interface Product {
@@ -22,23 +21,22 @@ export default function ProductList({ products }: { products: Product[] }) {
     <div className="w-full max-w-3xl mx-auto space-y-4 p-4">
       {products.map((product, index) => (
         <Card key={index} className="overflow-hidden">
-         
-         <div className="flex ml-4 gap-2 pt-4 flex-row">
-          <div className="h-8 w-8 bg-green-600 text-white rounded-full flex items-center justify-center text-[14px] font-bold">
-            K
-          </div>
-          <div>
-            <div className="flex items-center justify-center gap-1">
-              <h1 className="text-[20px] pt-[2px]">KellyFashion</h1>
+          <div className="flex ml-4 gap-2 pt-4 flex-row">
+            <div className="h-8 w-8 bg-green-600 text-white rounded-full flex items-center justify-center text-[14px] font-bold">
+              K
             </div>
+            <div>
+              <div className="flex items-center justify-center gap-1">
+                <h1 className="text-[20px] pt-[2px]">KellyFashion</h1>
+              </div>
+            </div>
+            <Image
+              src="/icon/check.svg"
+              alt="green check"
+              width={22}
+              height={22}
+            />
           </div>
-          <Image
-                  src="/icon/check.svg"
-                  alt="green check"
-                  width={22}
-                  height={22}
-                />
-        </div>
           <CardContent className="p-6">
             <div className="flex items-start gap-2">
               <div className="flex-shrink-0">
@@ -65,8 +63,8 @@ export default function ProductList({ products }: { products: Product[] }) {
                   <span className="font-medium">{product.unidades} uni</span>
                 </div>
                 <div className="flex flex-row gap-2">
-                  <span className="text-muted-foreground">Ventas</span>
-                  <span className="font-medium">{product.precio}</span>
+                  <span className="text-muted-foreground">Ventas:</span>
+                  <span className="font-medium">{product.precio}28</span>
                 </div>
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Rating</span>
