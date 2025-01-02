@@ -10,7 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { createProduct } from '@/actions/products'
+import { createService } from '@/actions/services'
 
 
 const serviceSchema = z.object({
@@ -38,13 +38,14 @@ export default function ServicePost() {
   })
 
   async function onSubmit(values: ProductFormValues) {
+    console.log("values", values)
     try {
       const formData = new FormData();
       Object.entries(values).forEach(([key, value]) => {
         formData.append(key, value.toString());
       });
       console.log(formData)
-      const response = await createProduct(formData);
+      const response = await createService(formData);
       if (response.success) {
         toast.success("Service has created")
       }
@@ -86,7 +87,7 @@ export default function ServicePost() {
                 <FormItem>
                   <FormLabel>Nombre del servicio</FormLabel>
                   <FormControl>
-                    <Input placeholder="Producto o Servicio" {...field} />
+                    <Input placeholder="Nombre del servicio" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
