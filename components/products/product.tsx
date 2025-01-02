@@ -18,7 +18,7 @@ interface ProductViewProps {
 
 type Color = "Gris" | "Amarillo" | "Verde";
 
-const ProductView: React.FC<ProductViewProps> = ({ product }) => {
+const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedColor, setSelectedColor] = useState<Color>('Gris')
   const [selectedSize, setSelectedSize] = useState('S')
