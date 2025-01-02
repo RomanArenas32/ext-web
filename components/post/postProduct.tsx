@@ -13,7 +13,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createProduct } from '@/actions/products'
 import { TermsDrawer } from '@/components/sell/terms-drawer'
-import { Header } from '@/components/common/header'
 
 
 const productSchema = z.object({

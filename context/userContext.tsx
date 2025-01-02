@@ -5,6 +5,7 @@ import { createContext, useState, useContext, ReactNode } from "react";
 interface User {
   id: number;
   nombre: string;
+  marketName: string;
   apellido: string;
   email: string;
   role: string;
@@ -14,6 +15,7 @@ interface User {
 const mockUser: User = {
   id: 1,
   nombre: "Juan",
+  marketName: "Juan's Market",
   apellido: "Pérez",
   email: "juan.perez@example.com",
   role: "user",
