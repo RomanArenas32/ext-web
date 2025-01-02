@@ -31,19 +31,32 @@ export default function Page() {
                     </button> */}
                 </div>
                 <div className="p-6">
-                    <Section title="Wallet">
-                        <Item icon={<Download />} label="Deposit" />
-                        <Item icon={<Upload />} label="Withdraw" />
-                        <Item icon={<Repeat />} label="Transfer" />
-                        <Item icon={<History />} label="History" />
-                        <Item icon={<Plus />} label="Buy crypto" />
-                        <Item icon={<RefreshCw />} label="Swap" />
-                        <Item icon={<TrendingUp />} label="P2P trading" />
-                        <Link href="/products">
-                         <Item icon={<Store />} label="Emprende ya!" />
-                        </Link>
-                       
-                    </Section>
+                <Section title="Wallet">
+  {/* Primer Item con ícono personalizado */}
+  <Item
+    icon={
+      <Image
+        src="/icon/check.svg"
+        width={40}
+        height={40}
+        alt="check"
+      />
+    }
+    label="Deposit"
+  />
+  {/* Otros Items */}
+  <Item icon={<Upload />} label="Withdraw" />
+  <Item icon={<Repeat />} label="Transfer" />
+  <Item icon={<History />} label="History" />
+  <Item icon={<Plus />} label="Buy crypto" />
+  <Item icon={<RefreshCw />} label="Swap" />
+  <Item icon={<TrendingUp />} label="P2P trading" />
+  {/* Link con Item */}
+  <Link href="/products">
+    <Item icon={<Store />} label="Emprende ya!" />
+  </Link>
+</Section>
+
                     <Section title="Wanya">
                         <Item icon={<Info />} label="About us" />
                         <Item icon={<Globe />} label="Social" />
@@ -64,7 +77,7 @@ export default function Page() {
 function Item({ icon, label }: { icon: ReactNode; label: string }) {
     return (
         <div className="flex flex-col items-center text-center">
-            <div className="w-12 h-12 flex items-center justify-center text-green-700 bg-green-100 rounded-full mb-0">
+            <div className="w-12 h-12 flex items-center justify-center text-green-700 bg-white rounded-full mb-0">
                 {icon}
             </div>
             <p className="text-sm font-medium">{label}</p>
