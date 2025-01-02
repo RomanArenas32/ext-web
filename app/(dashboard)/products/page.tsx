@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/common/header";
 import ProductHome from "@/components/products/home";
-import SellerHome from "@/components/seller/home";
+import HomeServices from "@/components/services/home";
 import { RoleSwitch } from "@/components/ui/role-swich";
 import { Separator } from "@/components/ui/separator";
 import { useUser } from "@/context/userContext";
@@ -21,7 +21,7 @@ export default function Page() {
                 <RoleSwitch tab={tab} onRoleChange={setTab} />
             </div>
 
-            {tab === "product" ? <ProductHome /> : <SellerHome />}
+            {tab === "product" ? <ProductHome /> : <HomeServices />}
         </div>
     );
 }

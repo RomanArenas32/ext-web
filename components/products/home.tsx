@@ -106,9 +106,24 @@ export default function ProductCategories() {
         <CarouselPrevious className="-left-12" />
         <CarouselNext className="right-2" />
       </Carousel>
-      <div className='flex relative justify-center mx-4 ml-[14px] w-[400px]'>
-        <Input placeholder="Buscar productos" className="w-full rounded-lg ml-22 mt-4 max-w-[327px]" icon={<Search/>}/>
-      </div>
+      <div className="relative flex justify-center mx-auto w-[400px]">
+  {/* Contenedor del input */}
+  <input
+    placeholder="Polos de algodón"
+    className="w-full pl-[45px] bg-gray-100 rounded-lg mt-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+  />
+  {/* Icono de búsqueda */}
+  <div className="absolute left-4 top-[28px] text-gray-500">
+    <Image
+      src="icon/search.svg"
+      alt="search icon"
+      width={16}
+      height={16}
+    />
+  </div>
+</div>
+
+
       <ProductList products={products}/>
     </>
 
