@@ -2,7 +2,6 @@
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
-import { Input } from '../ui/input'
 import ProductList from './productsList'
 import { useEffect, useState } from 'react'
 import { getProducts } from '@/actions/products'

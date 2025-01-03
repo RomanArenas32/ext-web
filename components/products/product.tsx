@@ -54,7 +54,11 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
 
   return (
     <div className="max-w-md bg-white min-h-screen rounded-2xl overflow-hidden">
-      <Header text={"Producto"} link={"/products"} />
+      <Header text={"Producto"} link={"/products"} button={{
+      text: "Ver detalles",
+      href: `/products/details/676f2ec8f1ee1afab7a88169`,
+      className: "text-gray-700 border rounded-3xl mt-6 border-gray-300 bg-gray-100 mr-8",
+    }}/>
       <Separator />
       <div className="pt-8 px-6">
         <div className="flex items-center gap-2 font-bold text-sm">
