@@ -1,9 +1,10 @@
 'use client'
 
-import { MessageSquareMore, AlertTriangle, ClipboardCheck, ChevronLeft } from 'lucide-react'
+import { MessageSquareMore, ClipboardCheck, ChevronLeft, CircleAlert } from 'lucide-react'
 import Link from 'next/link'
 import { Separator } from '../ui/separator'
 import Image from 'next/image'
+import { Button } from '../ui/button'
 
 interface ConfirmationProps {
   productDetails: {
@@ -12,6 +13,7 @@ interface ConfirmationProps {
     size: string
     quantity: number
     totalPrice: number
+    name: string
   }
 }
 
@@ -38,7 +40,7 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
       </div>
 
       {/* Store Information */}
-      <div className="flex items-center px-6 py-4 rounded-lg bg-green-50 shadow-md">
+      <div className="flex items-center px-6 py-4 rounded-lg bg-[#F0F9F5] shadow-md">
         {/* Avatar */}
         <div className="flex items-center justify-center h-10 w-10 bg-green-600 text-white rounded-full font-bold text-[16px]">
           K
@@ -78,53 +80,71 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
 
       {/* Product Details */}
       <div className="px-6 py-4">
-        <h2 className="text-2xl font-semibold text-red-500">Polo</h2>
-        <div className="flex mt-4">
-          <div className="space-y-2 text-sm font-bold text-gray-700">
-            <p><span className="font-bold">Color:</span> {productDetails.color}</p>
-            <p><span className="font-bold">Talla:</span> {productDetails.size}</p>
-            <p><span className="font-bold">Cantidad:</span> {productDetails.quantity}</p>
-            <p><span className="font-bold">Método de Pago:</span> Transferencia</p>
-            <p><span className="font-bold">Costo de envío:</span> S/18.00</p>
-            <p className="flex items-center gap-2">
-              <span className="font-bold">Código:</span> 2267738474859927493937
-              <ClipboardCheck className="w-6 h-6 text-green-700" />
-            </p>
-            <p className="text-lg font-bold text-gray-900">Total: S/ {productDetails.totalPrice.toFixed(2)}</p>
-          </div>
+        <div className="flex items-start justify-between">
+          <h2 className="text-[16px] font-semibold text-red-500">{productDetails?.name || ""}</h2>
           <Image
             src="/img/poloama.jpg"
             alt="T-Shirt"
             width={24}
             height={24}
-            className="w-24 h-24 object-cover"
+            className="w-[50px] h-[50px] object-cover"
           />
+        </div>
+        <div className="mt-4 space-y-2 text-sm">
+          <div className="grid grid-cols-2 gap-[2px]">
+            <p className="text-gray-600">Color:</p>
+            <p className="font-medium text-gray-900 items-end text-end">{productDetails.color}</p>
+
+            <p className="text-gray-600">Talla:</p>
+            <p className="font-medium text-gray-900 text-end">{productDetails.size}</p>
+
+            <p className="text-gray-600">Cantidad:</p>
+            <p className="font-medium text-gray-900 text-end">{productDetails.quantity}</p>
+
+            <p className="text-gray-600">Método de Pago:</p>
+            <p className="font-medium text-gray-900 text-end">Transferencia</p>
+
+            <p className="text-gray-600">Costo de envío:</p>
+            <p className="font-medium text-gray-900 text-end">S/18.00</p>
+
+            <p className="text-gray-600">Total: </p>
+            <p className="font-medium text-gray-900 text-end">S/ {productDetails.totalPrice.toFixed(2)}</p>
+
+             <p className="text-gray-600">Código:</p>
+            <div className='flex flex-row justify-between text-end gap-2 items-end'>
+              <p className="font-medium text-gray-900 text-end w-full">{new Date().getTime()}</p>
+              <ClipboardCheck className="w-5 h-5 text-green-700" />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Alert Message */}
-      <div className="mx-6 py-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-3xl mt-4">
+      <div className="py-4 bg-gradient-to-r from-yellow-100 to-yellow-50 border-l-4  rounded-md mt-4 w-full">
         <div className="flex items-start px-6 gap-2">
-          <AlertTriangle className="text-yellow-500 w-8 h-8" />
-          <p className="text-sm font-bold text-gray-700">
+          <CircleAlert className="text-yellow-500 w-8 h-8" />
+          <p className="text-[12px] text-[#12332A]">
             <span className="font-bold text-red-500">ATENCIÓN:</span> Si cancelas el pedido antes de la entrega se te cobrará una comisión.
           </p>
         </div>
       </div>
 
+
       {/* Buttons */}
-      <div className="px-6 py-4 flex mx-8 flex-col gap-4">
-        <button
-          className="bg-green-600 text-white py-3 px-4 rounded-3xl text-center font-bold cursor-not-allowed"
+      <div className="px-6 py-4 flex mx-8 flex-col gap-4 w-[281px]">
+        <Button
+          variant="secondary"
+          className="bg-[#E6E6E6] text-[#999999] text-[16px] py-3 px-4 rounded-3xl text-center font-bold cursor-not-allowed w-full h-[52px]"
           disabled
         >
           Producto recibido
-        </button>
-        <button
-          className="bg-gray-300 text-black py-3 px-4 rounded-3xl text-center font-bold"
+        </Button>
+        <Button
+          variant="ghost"
+          className="bg-white text-[#1A4B3D] text-[16px] py-3 px-4 rounded-3xl text-center font-bold w-full h-[52px] border-none"
         >
           Cancelar
-        </button>
+        </Button>
       </div>
     </div>
   )
