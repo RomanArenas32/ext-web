@@ -1,6 +1,5 @@
 
 
-import { API_URL } from "@/lib/consts";
 import { z } from 'zod'
 
 export const productSchema = z.object({
@@ -50,7 +49,7 @@ export async function createProduct(values: any) {
 }
 
 export async function getProductById(_id: string) {
-
+  console.log(_id)
   try {
     const response = await fetch(`https://ext-server.onrender.com/products/${_id}`, {
       method: 'GET',

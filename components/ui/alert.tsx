@@ -15,7 +15,7 @@ import { SubmitFormButton } from "@/components/ui/form-drawer";
 import { VisuallyHidden } from "@reach/visually-hidden";
 import { useState } from "react";
 
-export function AlertMessage({ form, onSubmit }: any) {
+export function AlertMessage({ form, onSubmit, text }: any) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -35,15 +35,15 @@ export function AlertMessage({ form, onSubmit }: any) {
         <SubmitFormButton
           type="button"
           size="lg"
-          className="w-full text-white py-2 "
-          disabled={isSubmitting || form.formState.isSubmitting}
+          className="w-[280px] h-[52px] bg-[#1A4B3D] text-white text-[16px] font-[500] rounded-3xl"
+          disabled={isSubmitting }
         >
-          confirm
+          {text || "Confirm"}
         </SubmitFormButton>
       </AlertDialogTrigger>
-      <AlertDialogContent  className="top-1/4 md:top-1/2">
+      <AlertDialogContent  className="top-1/4 md:top-1/2 w-[90%] rounded-md">
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+          <AlertDialogTitle>Estas seguro/a?</AlertDialogTitle>
           <VisuallyHidden>
             <AlertDialogDescription>
               Are you sure? This action is irreversible.
@@ -52,7 +52,7 @@ export function AlertMessage({ form, onSubmit }: any) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={isSubmitting}>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleSubmit} disabled={isSubmitting}>
+          <AlertDialogAction onClick={handleSubmit} disabled={isSubmitting} className="bg-[#1A4B3D] text-white">
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>

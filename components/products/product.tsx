@@ -5,12 +5,9 @@ import { Header } from '../common/header'
 import { Confirmation } from './confirmProduct'
 import FromDrawer from "../ui/form-drawer"
 import { Separator } from '../ui/separator'
-
-interface Product {
-  _id: string;
-  precio: number;
-  // Add other product properties as needed
-}
+import { Product } from '@/interfaces/product'
+import { QuantitySelector } from '../common/quantity-selection'
+import ProductDetail from './productDetail'
 
 interface ProductViewProps {
   product: Product;
@@ -19,10 +16,12 @@ interface ProductViewProps {
 type Color = "Gris" | "Amarillo" | "Verde";
 
 const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpenGetProduct, setIsModalOpenGetProduct] = useState(false)
+  const [isModalOpenDetailProduct, setIsModalOpenDetailProduct] = useState(false)
+
   const [selectedColor, setSelectedColor] = useState<Color>('Gris')
   const [selectedSize, setSelectedSize] = useState('S')
-  const [quantity, setQuantity] = useState(23)
+  const [quantity, setQuantity] = useState(3)
 
   const colorImageMap: Record<Color, string> = {
     Gris: "/img/pologris.jpg",
@@ -38,124 +37,135 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
     setSelectedSize(size)
   }
 
-  const handleQuantityChange = (newQuantity: number) => {
-    setQuantity(newQuantity)
-  }
-
   const calculateTotalPrice = () => {
-    return quantity * (product?.precio || 3.40)
+    return quantity * (product?.price || 3.40)
   }
-
-  const openModal = () => {
-    setIsModalOpen(true)
-  }
-
-
 
   return (
-    <div className="max-w-md bg-white min-h-screen rounded-2xl overflow-hidden">
-      <Header text={"Producto"} link={"/products"} button={{
-      text: "Ver detalles",
-      href: `/products/details/676f2ec8f1ee1afab7a88169`,
-      className: "text-gray-700 border rounded-3xl mt-6 border-gray-300 bg-gray-100 mr-8",
-    }}/>
+    <div className="max-w-md bg-white min-h-screen mb-10">
+     <Header 
+        text="Producto" 
+        link="/products" 
+        button={{
+          text: "Ver detalles",
+          className: " text-[#B0B0B0] border border-[#B0B0B0] rounded-3xl  bg-white",
+          action: () => setIsModalOpenDetailProduct(true)
+        }} 
+      />
       <Separator />
-      <div className="pt-8 px-6">
-        <div className="flex items-center gap-2 font-bold text-sm">
-          <span className="text-gray-600">Precio por mayor</span>
-          <span>S/. {product?.precio || "3.20"}.00</span>
-          <span className="text-gray-500 ml-auto text-xs">00:27s</span>
+
+      <div className="px-4 py-6 space-y-8">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-gray-600 text-sm">Precio por mayor</span>
+            <span className="text-sm font-medium">S/ {product?.price || "3.40"}</span>
+          </div>
+          <span className="text-gray-500 text-xs">00:27s</span>
         </div>
-      </div>
-      <div className="mt-8 px-6">
-        <span className="text-sm font-bold">Color</span>
-        <div className="flex mt-4 ml-10 gap-10">
-          <div className="relative">
+
+        <div className="space-y-4 flex items-center gap-4">
+          <h3 className="text-base font-medium">Color</h3>
+          <div className="flex gap-6">
             <img
               src={colorImageMap[selectedColor]}
               alt={`Producto ${selectedColor}`}
-              className="h-24 w-24 object-cover"
+              className="h-28 w-28 object-cover rounded-lg"
             />
+            <div className="flex flex-row gap-3 items-center">
+              <button
+                className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Gris' ? 'border-green-800' : 'border-gray-200'} bg-gray-100`}
+                onClick={() => handleColorSelect('Gris')}
+              />
+              <button
+                className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Amarillo' ? 'border-green-800' : 'border-gray-200'} bg-yellow-200`}
+                onClick={() => handleColorSelect('Amarillo')}
+              />
+              <button
+                className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Verde' ? 'border-green-800' : 'border-gray-200'} bg-green-200`}
+                onClick={() => handleColorSelect('Verde')}
+              />
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            <button
-              className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Gris' ? 'border-black' : 'border-gray-300'} bg-gray-500`}
-              onClick={() => handleColorSelect('Gris')}
-            ></button>
-            <button
-              className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Amarillo' ? 'border-black' : 'border-gray-300'} bg-yellow-300`}
-              onClick={() => handleColorSelect('Amarillo')}
-            ></button>
-            <button
-              className={`h-10 w-10 rounded-full border-2 ${selectedColor === 'Verde' ? 'border-black' : 'border-gray-300'} bg-green-300`}
-              onClick={() => handleColorSelect('Verde')}
-            ></button>
+        </div>
+
+        <div className="space-y-4 flex items-center gap-4">
+          <h3 className="text-base font-medium">Talla</h3>
+          <div className="flex gap-3">
+            {['S', 'M', 'L', 'XL'].map((size) => (
+              <button
+                key={size}
+                className={`w-12 h-12 rounded-full border text-sm font-medium transition-colors
+                  ${selectedSize === size
+                    ? 'border-green-800 bg-green-800 text-white'
+                    : 'border-gray-300 text-gray-700'
+                  }`}
+                onClick={() => handleSizeSelect(size)}
+              >
+                {size}
+              </button>
+            ))}
           </div>
         </div>
-      </div>
-      <div className="mt-8 px-6">
-        <span className="text-sm font-bold">Talla</span>
-        <div className="flex gap-3 mt-4">
-          <button
-            className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'S' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
-            onClick={() => handleSizeSelect('S')}
+
+        <div className="space-y-4">
+          <h3 className="text-base font-medium">Cantidad</h3>
+          <QuantitySelector
+            initialQuantity={quantity}
+            minQuantity={3}
+            onChange={setQuantity}
+          />
+          <div className="space-y-1">
+            <p className="text-xs text-gray-500">Min. 3 UN</p>
+            <p className="text-xs text-green-600">Disponible: 1,390.84 PEN</p>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div className="flex justify-between items-center py-4 border-t border-b">
+            <span className="text-base font-medium">Total</span>
+            <span className="text-xl font-medium">S/ {calculateTotalPrice().toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-600">Tiempo entrega</span>
+            <span className="text-sm font-medium">4 a 24 hrs</span>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <p className="text-xs text-gray-500">
+            By proceeding, you've read and agreed to the{' '}
+            <a href="#" className="text-green-800 underline">
+              Wanya Emprende ya legal disclaimer
+            </a>
+            .
+          </p>
+          <div className='w-full flex justify-center'>
+            <button
+            onClick={() => setIsModalOpenGetProduct(true)}
+            className="w-[280px] bg-[#1A4B3D] text-white rounded-full py-4 font-medium h-[52px] flex justify-center items-center"
           >
-            S
+            Lo quiero ya!
           </button>
-          <button
-            className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'M' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
-            onClick={() => handleSizeSelect('M')}
-          >
-            M
-          </button>
-          <button
-            className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'L' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
-            onClick={() => handleSizeSelect('L')}
-          >
-            L
-          </button>
-          <button
-            className={`w-12 h-12 rounded-full border-2 ${selectedSize === 'XL' ? 'border-green-800 bg-green-800 text-white' : 'border-gray-300'}`}
-            onClick={() => handleSizeSelect('XL')}
-          >
-            XL
-          </button>
+          </div>
+          
         </div>
       </div>
-      <div className="mt-8 px-6">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-bold">Cantidad</span>
-          <span className="text-3xl font-bold">{quantity} uni</span>
-        </div>
-        <div className="text-xs font-bold text-gray-500 mt-2">Min. 3 uni</div>
-        <div className="text-xs font-bold  text-green-600 mt-1">Disponible: 240 unidades</div>
-      </div>
-      <div className="mt-8 px-6">
-        <div className="flex justify-between items-center py-4 border-t border-b">
-          <span className="text-sm font-bold">Total</span>
-          <span className="text-xl font-bold">S/. {calculateTotalPrice().toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between items-center mt-4">
-          <span className="text-sm font-bold text-gray-600">Tiempo entrega</span>
-          <span className="text-sm font-bold">4 a 12 hrs</span>
-        </div>
-      </div>
-      <div className="px-6 mt-8">
-        <p className="text-xs text-gray-500">
-          By proceeding, you've read and agreed to the{' '}
-          <a href="#" className="text-green-600 underline">Wanya Emprende ya legal disclaimer</a>.
-        </p>
-        <button
-          className="w-[80%] flex justify-center items-center bg-green-800 text-white rounded-full py-4 mt-6 mx-8 mb-8 font-bold"
-          onClick={openModal}
-        >
-          Lo quiero ya!
-        </button>
-      </div>
+
       <FromDrawer
-        isOpen={isModalOpen}
-        onOpenChange={setIsModalOpen}
-        trigger={undefined}>
+        isOpen={isModalOpenDetailProduct}
+        onOpenChange={(open) => setIsModalOpenDetailProduct(open)}
+        trigger={undefined}
+      >
+        <ProductDetail
+          productDetails={product}
+        />
+      </FromDrawer>
+
+      <FromDrawer
+        isOpen={isModalOpenGetProduct}
+        onOpenChange={(open) => setIsModalOpenGetProduct(open)}
+        trigger={undefined}
+      >
         <Confirmation
           productDetails={{
             _id: product._id,
