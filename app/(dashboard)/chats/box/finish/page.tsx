@@ -1,6 +1,6 @@
 "use client"
 
-import OrderDetail from "@/components/chat/ventarealizada"
+import Chatfin from "@/components/chat/chatfinal"
 
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
     return (
 
         <div className="p-4">
-            <OrderDetail />
+            <Chatfin />
         </div>
     )
 }
