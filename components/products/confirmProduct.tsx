@@ -105,7 +105,6 @@ console.log("Order", order)
             </span>
           </div>
         </div>
-
         {/* Product Details */}
         <div className="px-6 py-4">
           <div className="flex items-start justify-between">

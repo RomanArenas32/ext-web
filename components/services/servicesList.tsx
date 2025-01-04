@@ -30,7 +30,7 @@ export default function ServicesList({ services }: { services: Service[] }) {
               height={22}
             />
             <Link href={`/products/${service._id}`}>
-              <Button className="bg-green-500 hover:bg-green-600 ml-auto text-white">
+              <Button className="bg-green-500 hover:bg-green-600 mr-[20px] text-white">
                 Ver más
               </Button>
             </Link>
@@ -38,43 +38,39 @@ export default function ServicesList({ services }: { services: Service[] }) {
           <CardContent className="p-6">
             <div className="flex items-start gap-6">
               <div className="flex-shrink-0">
-                <Image
-                  src={service.img || "/icon/camion1.svg"}
-                  alt={`${service.name} image`}
-                  width={100}
-                  height={92}
-                  className="rounded-lg object-cover"
-                />
+              <Image
+                src="/icon/camion1.svg"
+                alt="camion image"
+                width={100}
+                height={92}
+                className="rounded-lg object-cover"
+              />
               </div>
               <div className="flex-1 min-w-0 pt-4">
                 <div className="flex flex-row gap-2">
-                  <span className="text-muted-foreground">Pasajeros: </span>
-                  {/*
-                                    <span className="font-medium">{product.} personas</span>
-
-                  */}
+                  <span className="text-muted-foreground">Pasajeros:</span>
+                  <span className="font-medium">8 personas</span>
                 </div>
-                <div className="flex flex-row gap-2">unidades
+                <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Disponibilidad: </span>
                   <span className="font-medium">2 días</span>
                 </div>
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Ventas:</span>
-                  <span className="font-medium">{service.__v}</span>
+                  <span className="font-medium">17</span>
                 </div>
                 <div className="flex flex-row gap-2">
                   <span className="text-muted-foreground">Rating:</span>
                   <span className="font-medium">98%</span>
-                  <CheckCircle className="text-green-500 w-5 h-5" />
                 </div>
               </div>
               <div className="pt-[30px] flex-col">
-                <div className="text-[20px] font-bold flex items-baseline pt-[20px] gap-x-1">
+                {/* <div className="text-[20px] font-bold flex items-baseline pt-[20px] gap-x-1">
                   <span className="text-[18px] text-black text-muted-foreground">
                     S/
                   </span>
                   <span>{service.price}</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </CardContent>
