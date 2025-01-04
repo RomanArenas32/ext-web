@@ -17,7 +17,7 @@ interface ConfirmationProps {
 
 export function Confirmation({ productDetails }: ConfirmationProps) {
   return (
-    <div className="max-w-md mx-auto rounded-b-2xl space-y-6">
+    <div className="max-w-md mx-auto rounded-b-2xl space-y-5">
        <header className="bg-white  flex flex-row items-center w-fulls relative p-4">
             <Link href={"/products"}>
                 <button className="items-center flex justify-center absolute left-6">
@@ -30,14 +30,14 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
         </header>
         <Separator />
       {/* Countdown */}
-      <div className="px-6 py-4">
+      <div className="px-6">
         <p className="text-sm font-bold text-gray-700">
           La compra se cancela en <span className="text-orange-500">5:00:48s</span>
         </p>
       </div>
 
       {/* Store Information */}
-      <div className="flex items-center px-6 py-4 rounded-lg bg-green-50 shadow-md">
+      <div className="flex items-center px-6 py-3 rounded-lg bg-green-50 shadow-md">
   {/* Avatar */}
   <div className="flex items-center justify-center h-10 w-10 bg-green-600 text-white rounded-full font-bold text-[16px]">
     K
@@ -102,25 +102,30 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
       </div>
 
       {/* Alert Message */}
-      <div className="mx-6 py-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-3xl mt-4">
+      <div className="mx-auto py-4 bg-yellow-100 max-w-[80%] border-l-4 border-yellow-400 rounded-3xl mt-4">
         <div className="flex items-start px-6 gap-2">
-          <AlertTriangle className="text-yellow-500 w-8 h-8" />
-          <p className="text-sm font-bold text-gray-700">
-            <span className="font-bold text-red-500">ATENCIÓN:</span> Si cancelas el pedido antes de la entrega se te cobrará una comisión.
+        <Image
+            src="/icon/alert.svg"
+            alt="alert"
+            width={20}
+            height={20}
+          />
+          <p className="text-sm font-bold max-w-[80%] text-gray-700">
+            <span className="font-boldn  text-red-500">ATENCIÓN:</span> Si cancelas el pedido antes de la entrega se te cobrará una comisión.
           </p>
         </div>
       </div>
 
       {/* Buttons */}
-      <div className="px-6 py-4 flex mx-8 flex-col gap-4">
+      <div className="px-6 pt-4 pb-8 flex mx-8 flex-col gap-4">
         <button
-          className="bg-green-600 text-white py-3 px-4 rounded-3xl text-center font-bold cursor-not-allowed"
+          className="bg-gray-200 text-gray-500 py-3 px-4 rounded-3xl text-center font-bold cursor-not-allowed"
           disabled
         >
           Producto recibido
         </button>
         <button
-          className="bg-gray-300 text-black py-3 px-4 rounded-3xl text-center font-bold"
+          className="bg-gray-200 text-gray-500 py-3 px-4 rounded-3xl text-center font-bold"
         >
           Cancelar
         </button>
