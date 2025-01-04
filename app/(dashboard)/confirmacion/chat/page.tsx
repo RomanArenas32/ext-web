@@ -20,7 +20,7 @@ const Chat = () => {
                     </div>
                     <div>
                         <div className="flex items-center gap-1">
-                            <h1 className="text-sm font-medium">Negocio 1</h1>
+                            <h1 className="text-sm font-medium">Negocio s1</h1>
                             <span className="text-green-500 text-xs">✔</span>
                         </div>
                         <p className="text-xs text-gray-500">Last seen 1 hour(s) ago</p>
