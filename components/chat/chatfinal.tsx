@@ -70,7 +70,7 @@ export default function Chatfin() {
           </div>
         </div>
         <div className="p-2">
-          <div className="text-sm rounded-full w-fit ml-auto p-2 px-4 bg-green-100 text-gray-500 text-right">
+          <div className="text-sm rounded-full w-fit ml-auto p-2 px-4 bg-green-100 text-green-900 text-right">
             Muchas gracias
           </div>
           <div className="text-[40px] text-end mt-2">🙌</div>

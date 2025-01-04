@@ -45,7 +45,7 @@ const ChatDetail = () => {
           <button>Producto recibido</button>
         </div>
       </div>
-      <div className="bg-[#FFF8E1] mt-4 mx-6 text-yellow-800 text-sm gap-2 p-3 flex rounded-2xl items-center">
+      <div className="bg-[#FFF8E1] mt-4 mx-6 text-green-900 text-sm gap-2 p-3 flex rounded-2xl items-center">
         <Image
           src="/icon/alert.svg"
           alt="alert"
@@ -73,7 +73,7 @@ const ChatDetail = () => {
         </div>
 
       <div className="p-2">
-        <div className="text-sm rounded-full w-fit ml-auto p-2 px-4 bg-green-100 text-gray-500 text-right">
+        <div className="text-sm rounded-full w-fit ml-auto p-2 px-4 bg-green-100 text-green-900 text-right">
           Está bien, quedo atento
         </div>
       </div>
