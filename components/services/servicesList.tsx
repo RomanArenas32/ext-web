@@ -2,79 +2,84 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle } from 'lucide-react';
 import Link from "next/link";
 import { Service } from "./home";
+import { Separator } from "../ui/separator";
 
 
 export default function ServicesList({ services }: { services: Service[] }) {
-  console.log(services)
+  console.log("services", services);
   return (
     <div className="w-full max-w-3xl mx-auto space-y-4 p-4">
-      {services.map((service, index) => (
-        <Card key={service._id} className="overflow-hidden">
-          <div className="flex ml-4 gap-2 pt-4 flex-row">
-            <div className="h-8 w-8 bg-green-600 text-white rounded-full flex items-center justify-center text-[14px] font-bold">
-              {service.name.charAt(0)}
+      {services.map((service) => (
+        <div key={service._id} className="overflow-hidden flex flex-col">
+          <div className="flex flex-row justify-between items-center p-2">
+            <div className="flex flex-row gap-3 justify-start items-center">
+              <div className="h-8 w-8 bg-green-600 text-white rounded-full flex items-center justify-center text-[14px] font-bold">
+                {service.name.charAt(0)}
+              </div>
+              <div>
+                <div className="flex items-center justify-center gap-1">
+                  <h1 className="text-[14px] pt-[2px]">{service.name}</h1>
+                </div>
+              </div>
+              <Image
+                src="/icon/check.svg"
+                alt="green check"
+                width={22}
+                height={22}
+              />
             </div>
-            <div>
-              <div className="flex items-center justify-center gap-1">
-                <h1 className="text-[20px] pt-[2px]">{service.name}</h1>
+            <div className="flex flex-row gap-2 justify-start w-auto">
+              <div className="flex flex-row gap-2">
+                <span className="text-[#4F4F4F] text-[10px]">Ventas:</span>
+                <span className="font-semibold text-[#0B231D] text-[10px]">17</span>
+              </div>
+              <div className="flex flex-row gap-2">
+                <span className="text-[#4F4F4F] text-[10px]">Rating:</span>
+                <span className="font-semibold text-[#0B231D] text-[10px]">98%</span>
               </div>
             </div>
-            <Image
-              src="/icon/check.svg"
-              alt="green check"
-              width={22}
-              height={22}
-            />
-            <Link href={`/products/${service._id}`}>
-              <Button className="bg-green-500 hover:bg-green-600 mr-[20px] text-white">
-                Ver más
-              </Button>
-            </Link>
           </div>
-          <CardContent className="p-6">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0">
+
+          <div className="flex flex-row justify-between items-center gap-3 p-2">
+            <div className="flex-shrink-0">
               <Image
                 src="/icon/camion1.svg"
                 alt="camion image"
                 width={100}
                 height={92}
-                className="rounded-lg object-cover"
+                className="w-[79px] h-[92px] rounded-lg object-cover"
               />
-              </div>
-              <div className="flex-1 min-w-0 pt-4">
-                <div className="flex flex-row gap-2">
-                  <span className="text-muted-foreground">Pasajeros:</span>
-                  <span className="font-medium">8 personas</span>
-                </div>
-                <div className="flex flex-row gap-2">
-                  <span className="text-muted-foreground">Disponibilidad: </span>
-                  <span className="font-medium">2 días</span>
-                </div>
-                <div className="flex flex-row gap-2">
-                  <span className="text-muted-foreground">Ventas:</span>
-                  <span className="font-medium">17</span>
-                </div>
-                <div className="flex flex-row gap-2">
-                  <span className="text-muted-foreground">Rating:</span>
-                  <span className="font-medium">98%</span>
-                </div>
-              </div>
-              <div className="pt-[30px] flex-col">
-                {/* <div className="text-[20px] font-bold flex items-baseline pt-[20px] gap-x-1">
-                  <span className="text-[18px] text-black text-muted-foreground">
-                    S/
-                  </span>
-                  <span>{service.price}</span>
-                </div> */}
-              </div>
             </div>
-          </CardContent>
-        </Card>
+
+
+            <div className="flex-1 min-w-0 pt-4">
+            <div className="flex flex-row gap-2 justify-start items-center">
+                <span className=" text-[12px] font-semibold">S/ </span>
+                <span className="font-semibold  text-[24px]">{service.price}</span>
+              </div>
+              <div className="flex flex-row gap-2">
+                <span className="text-[#4F4F4F] text-[10px]">Pasajeros:</span>
+                <span className="font-semibold text-[#0B231D] text-[10px]">8 personas</span>
+              </div>
+              <div className="flex flex-row gap-2">
+                <span className="text-[#4F4F4F] text-[10px]">Disponibilidad: </span>
+                <span className="font-semibold text-[#0B231D] text-[10px]">2 días</span>
+              </div>
+
+            </div>
+
+            <Link href={`/products/${service._id}`}>
+              <Button className="bg-[#16C784] w-[98px] h-[28px] rounded-3xl hover:bg-green-600 text-[14px] text-white flex justify-center">
+                Ver más
+              </Button>
+            </Link>
+          </div>
+
+          <Separator />
+        </div>
+
       ))}
     </div>
   );

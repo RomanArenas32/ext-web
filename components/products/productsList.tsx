@@ -11,7 +11,7 @@ import { Product } from "@/interfaces/product"
 
 export default function ProductList({ products }: { products: Product[] }) {
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4 p-4">
+    <div className="w-full max-w-3xl mx-auto space-y-4 p-2">
       {products.map((product, index) => (
         <div key={index} className="overflow-hidden">
           <CardContent className="p-6">
@@ -28,9 +28,9 @@ export default function ProductList({ products }: { products: Product[] }) {
                   height={16}
                   className="mt-0.5"
                 />
-                <span className="text-muted-foreground text-sm">130 ventas</span>
+                <span className="text-[#4F4F4F] text-[10px]">130 ventas</span>
                 <div className="flex items-center gap-1">
-                  <span className="text-muted-foreground text-sm">100.00%</span>
+                  <span className="text-[#4F4F4F] text-[10px]">100.00%</span>
                 </div>
               </div>
             </div>
@@ -44,26 +44,26 @@ export default function ProductList({ products }: { products: Product[] }) {
                   className="rounded-lg object-cover w-full h-full"
                 />
               </div>
-              <div className="flex-1">
-                <div className="flex justify-between items-start">
-                  <div className="space-y-1">
+              <div className="flex-1 ">
+                <div className="flex justify-between items-center">
+                  <div className="space-y-1 ">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-muted-foreground text-sm">s/</span>
-                      <span className="text-2xl font-bold">{product.price}</span>
+                      <span className="text-[12px] font-semibold">s/</span>
+                      <span className="font-semibold  text-[24px]">{product.price}</span>
                     </div>
                     <div className="space-y-0.5">
                       <div className="flex gap-2">
-                        <span className="text-muted-foreground text-sm">Stock:</span>
-                        <span className="text-sm">{product.unities} UN</span>
+                        <span className="text-[#4F4F4F] text-[10px]">Stock:</span>
+                        <span className="font-semibold text-[#0B231D] text-[10px]">{product.unities} UN</span>
                       </div>
                       <div className="flex gap-2">
-                        <span className="text-muted-foreground text-sm">Envío:</span>
-                        <span className="text-sm">24hrs</span>
+                        <span className="text-[#4F4F4F] text-[10px]">Envío:</span>
+                        <span className="font-semibold text-[#0B231D] text-[10px]">24hrs</span>
                       </div>
                     </div>
                   </div>
                   <Link href={`/products/${product._id}`}>
-                    <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
+                    <Button className="bg-[#16C784] w-[98px] h-[28px] rounded-3xl hover:bg-green-600 text-[14px] text-white flex justify-center">
                       Ver más
                     </Button>
                   </Link>
@@ -71,8 +71,8 @@ export default function ProductList({ products }: { products: Product[] }) {
               </div>
             </div>
           </CardContent>
-         <Separator />
-        </div> 
+          <Separator />
+        </div>
       ))}
     </div>
   )
