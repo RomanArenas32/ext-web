@@ -8,7 +8,6 @@ import { Separator } from "../ui/separator";
 
 
 export default function ServicesList({ services }: { services: Service[] }) {
-  console.log("services", services);
   return (
     <div className="w-full max-w-3xl mx-auto space-y-4 p-4">
       {services.map((service) => (

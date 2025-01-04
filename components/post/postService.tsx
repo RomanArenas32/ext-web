@@ -41,7 +41,6 @@ export default function ServicePost() {
     try {
 
       const response = await createService(values);
-      console.log("Response", response);
       if (response.success) {
         toast.success("El servicio ha sido creado");
       }

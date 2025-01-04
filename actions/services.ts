@@ -24,7 +24,6 @@ export async function getServices() {
 }
 
 export async function createService(values: any) {
-console.log(values )
   try {
     const response = await fetch('https://ext-server.onrender.com/services', {
       method: 'POST',
@@ -33,8 +32,6 @@ console.log(values )
       },
       body: JSON.stringify(values),
     })
-    console.log(response)
-
     if (!response.ok) {
       throw new Error(`Error al crear el servicio: ${response.statusText}`)
     }
@@ -59,7 +56,6 @@ export async function getServiceById(_id: string) {
     if (!response.ok) {
       throw new Error(`Error al obtener el servicio: ${response.statusText}`);
     }
-    console.log(response)
     const productData = await response.json();
     return productData;
   } catch (error) {

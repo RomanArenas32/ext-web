@@ -29,7 +29,6 @@ const OrdersView = () => {
       try {
         setIsLoading(true);
         const response = await getOrders();
-        console.log("Orders response", response);
         if (response.ok) {
           setOrders(response.orders);
         } else {
@@ -48,9 +47,6 @@ const OrdersView = () => {
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
-
-  console.log(orders);
-
   if (isLoading) {
     return <div>Loading orders...</div>;
   }

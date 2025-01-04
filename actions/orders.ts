@@ -13,7 +13,6 @@ export async function getOrders() {
     const response = await fetch(`https://ext-server.onrender.com/orders`, {
       method: "GET",
     });
-    console.log(response)
     const body = (await response.json()) as any;
     return body;
   } catch (error) {
@@ -21,9 +20,7 @@ export async function getOrders() {
   }
 }
 
-export async function createOrder(values: any) {
-    console.log("Creating order with values:", values)
-  
+export async function createOrder(values: any) {  
     try {
       const response = await fetch('https://ext-server.onrender.com/orders', {
         method: 'POST',
@@ -31,17 +28,12 @@ export async function createOrder(values: any) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values),
-      })
-  
-      console.log("API Response:", response)
-  
+      })  
       if (!response.ok) {
         throw new Error(`Error creating order: ${response.status} ${response.statusText}`)
       }
   
-      const responseData = await response.json()
-      console.log("API Response Data:", responseData)
-  
+      const responseData = await response.json()  
       if (responseData.success) {
         return { success: true, data: responseData.data }
       } else {

@@ -30,11 +30,8 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
 
   useEffect(() => {
     const generateOrder = async () => {
-
-console.log("Order", order)
       try {
         const result = await createOrder(order)
-        console.log("Result", result) 
         if (result.success) {
           setOrderStatus('success')
         } else {

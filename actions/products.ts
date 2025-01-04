@@ -34,8 +34,6 @@ export async function createProduct(values: any) {
       },
       body: JSON.stringify(values),
     })
-    console.log(response)
-
     if (!response.ok) {
       throw new Error(`Error al crear el producto: ${response.statusText}`)
     }
@@ -49,7 +47,6 @@ export async function createProduct(values: any) {
 }
 
 export async function getProductById(_id: string) {
-  console.log(_id)
   try {
     const response = await fetch(`https://ext-server.onrender.com/products/${_id}`, {
       method: 'GET',
