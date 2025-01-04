@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { getProductById } from '@/actions/products';
-import { Product } from '@/components/products/productsList';
 import ProductView from '@/components/products/product';
+import { Product } from '@/interfaces/product';
 
 
 

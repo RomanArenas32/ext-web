@@ -6,6 +6,7 @@ import ProductList from './productsList'
 import { useEffect, useState } from 'react'
 import { getProducts } from '@/actions/products'
 import { Search } from "lucide-react"
+import { Input } from "../ui/input"
 
 
 
@@ -79,51 +80,46 @@ export default function ProductCategories() {
 
   return (
     <>
-      <Carousel 
-      opts={{
-        loop: true,
-      }}
-      className="w-full flex max-w-4xl items-center justify-center">
-        <CarouselContent className="-ml-2">
-          {categories.map((category, index) => (
-            <CarouselItem key={index} className="pl-2 md:pl-4 basis-auto">
-              <div className="flex flex-col items-center gap-2">
-                <div className="bg-white rounded-full p-4 shadow-sm relative w-20 h-20 flex items-center justify-center">
-                  <Image
-                    src={category.img}
-                    alt={category.name}
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 text-[#86efac]"
-                  />
+      <div className="flex flex-col gap-4">
+        <Carousel
+          opts={{
+            loop: true,
+          }}
+          className="w-full flex max-w-4xl items-center justify-center">
+          <CarouselContent className="-ml-2">
+            {categories.map((category, index) => (
+              <CarouselItem key={index} className="pl-2 md:pl-4 basis-auto">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="bg-white rounded-full p-4 shadow-sm relative w-20 h-20 flex items-center justify-center">
+                    <Image
+                      src={category.img}
+                      alt={category.name}
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 text-[#86efac]"
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-gray-900">{category.name}</span>
                 </div>
-                <span className="text-sm font-medium text-gray-900">{category.name}</span>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="-left-12" />
-        <CarouselNext className="right-2" />
-      </Carousel>
-      <div className="relative flex justify-center mx-auto w-[400px]">
-  {/* Contenedor del input */}
-  <input
-    placeholder="Polos de algodón"
-    className="w-full pl-[45px] bg-gray-100 rounded-lg mt-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
-  />
-  {/* Icono de búsqueda */}
-  <div className="absolute left-4 top-[28px] text-gray-500">
-    <Image
-      src="icon/search.svg"
-      alt="search icon"
-      width={16}
-      height={16}
-    />
-  </div>
-</div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="-left-12" />
+          <CarouselNext className="right-2" />
+        </Carousel>
+        <div className="w-full items-center justify-center flex">
+          {/* Contenedor del input */}
+          <Input
+            placeholder="ej: Polos de algodón"
+            className="w-[327px] h-10"
+            icon={<Search size={16} />}
+          />
+        </div>
+      </div>
 
 
-      <ProductList products={products}/>
+
+      <ProductList products={products} />
     </>
 
   )

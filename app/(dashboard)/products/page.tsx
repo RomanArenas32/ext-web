@@ -13,7 +13,7 @@ export default function Page() {
     const { user } = useUser();
 
     return (
-        <div className="overflow-hidden shadow-lg">
+        <div className="overflow-hidden">
             <Header text={`${user.address}`} link="/" />
             <Separator />
             <div className="flex flex-row items-center gap-8 p-4 justify-between">
