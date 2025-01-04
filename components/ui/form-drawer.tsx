@@ -8,7 +8,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { Button, ButtonProps } from "./button";
 import { cn } from "@/lib/utils";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { VisuallyHidden } from "@reach/visually-hidden";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface FormDrawerProps {
   trigger: React.ReactNode;

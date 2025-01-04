@@ -12,11 +12,11 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { SubmitFormButton } from "@/components/ui/form-drawer";
-import { VisuallyHidden } from "@reach/visually-hidden";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useState } from "react";
 
 interface AlertMessageProps {
-  onSubmit: () => Promise<void> | void;
+  onSubmit?: () => Promise<void> | void;
   text?: string;
   className?: string;
   title?: string;
@@ -30,7 +30,9 @@ export function AlertMessage({ onSubmit, text, className, title, description }: 
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      await onSubmit();
+      if (onSubmit) {
+        await onSubmit();
+      }
     } finally {
       setIsSubmitting(false);
       setIsDialogOpen(false);
