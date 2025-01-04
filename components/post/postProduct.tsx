@@ -66,10 +66,10 @@ export default function ProductPost() {
   }
 
   return (
-    <>
+    <div className='mb-28'>
 
       {showForm && (
-        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-6">
+        <div className="max-w-md mx-auto p-6 bg-white rounded-lg space-y-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -224,8 +224,9 @@ export default function ProductPost() {
                   </FormItem>
                 )}
               />
-
-              <Button type="submit" className="w-full">Publicar</Button>
+              <div className='w-full flex justify-center'>
+                <Button type="submit" className="w-[280px] h-[52px] bg-[#1A4B3D] rounded-3xl">Publicar</Button>
+              </div>
             </form>
 
           </Form>
@@ -241,7 +242,7 @@ export default function ProductPost() {
           />
         </div>
       )}
-    </>
+    </div>
   )
 }
 

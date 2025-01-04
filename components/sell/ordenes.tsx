@@ -1,16 +1,33 @@
 "use client";
-import React, { useState } from 'react';
-import { Check, ArrowLeft } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Check } from 'lucide-react';
+import { getOrders } from '@/actions/orders';
 
 const OrdersView = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const [orders, setOrders] = useState([]);
 
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+          const response = await getOrders();
+          console.log("Orders response", response)
+          setOrders(response.orders);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+        
+      }
+    
+    }
+    fetchOrders();
+  }, []);
+console.log(orders)
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-2xl">
+    <div className="max-w-md mx-auto p-4 bg-white rounded-lg">
       {/* Header */}
 
       {/* Tabs */}
