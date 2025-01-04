@@ -15,14 +15,22 @@ import { SubmitFormButton } from "@/components/ui/form-drawer";
 import { VisuallyHidden } from "@reach/visually-hidden";
 import { useState } from "react";
 
-export function AlertMessage({ form, onSubmit, text }: any) {
+interface AlertMessageProps {
+  onSubmit: () => Promise<void> | void;
+  text?: string;
+  className?: string;
+  title?: string;
+  description?: string;
+}
+
+export function AlertMessage({ onSubmit, text, className, title, description }: AlertMessageProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      await form.handleSubmit(onSubmit)();
+      await onSubmit();
     } finally {
       setIsSubmitting(false);
       setIsDialogOpen(false);
@@ -35,18 +43,18 @@ export function AlertMessage({ form, onSubmit, text }: any) {
         <SubmitFormButton
           type="button"
           size="lg"
-          className="w-[280px] h-[52px] bg-[#1A4B3D] text-white text-[16px] font-[500] rounded-3xl"
-          disabled={isSubmitting }
+          className={className ? className : "w-[280px] h-[52px] bg-[#1A4B3D] text-white text-[16px] font-[500] rounded-3xl"}
+          disabled={isSubmitting}
         >
           {text || "Confirm"}
         </SubmitFormButton>
       </AlertDialogTrigger>
-      <AlertDialogContent  className="top-1/4 md:top-1/2 w-[90%] rounded-md">
+      <AlertDialogContent className="top-1/4 md:top-1/2 w-[90%] rounded-md border-none">
         <AlertDialogHeader>
-          <AlertDialogTitle>Estas seguro/a?</AlertDialogTitle>
+          <AlertDialogTitle>{title || "Estas seguro/a?"}</AlertDialogTitle>
           <VisuallyHidden>
             <AlertDialogDescription>
-              Are you sure? This action is irreversible.
+              {description || "Are you sure? This action is irreversible."}
             </AlertDialogDescription>
           </VisuallyHidden>
         </AlertDialogHeader>

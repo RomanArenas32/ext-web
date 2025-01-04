@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import OrdersView from "@/components/sell/ordenes"
+import OrdersView from "@/components/orders/ordenes"
 import { Header } from "@/components/common/header"
 
 

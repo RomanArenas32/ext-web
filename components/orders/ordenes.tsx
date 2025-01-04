@@ -1,22 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Check, Copy } from 'lucide-react';
+import {  Copy } from 'lucide-react';
 import { getOrders } from '@/actions/orders';
 import { Separator } from '../ui/separator';
-import { Button } from '../ui/button';
+import { Order } from '@/interfaces/orders';
 
-interface Order {
-  _id: string;
-  product: string;
-  color: string;
-  size: string;
-  quantity: number;
-  paymentMethod: string;
-  code: string;
-  totalPrice: number;
-  status: string;
-}
 
 const OrdersView = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -48,11 +37,11 @@ const OrdersView = () => {
     setActiveTab(tab);
   };
   if (isLoading) {
-    return <div>Loading orders...</div>;
+    return <div className='min-h-[100vh] w-full grid place-items-center'>Loading orders...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className='min-h-[100vh] w-full grid place-items-center'>Error: {error}</div>;
   }
 
   return (
@@ -84,7 +73,23 @@ const OrdersView = () => {
           <div className='text-center'>No orders found</div>
         ) : (
           orders.map((order) => (
-            <div key={order._id} className="border border-gray-200 rounded-lg p-4">
+            <div key={order._id} className="p-4 flex flex-col gap-2">
+              <div className="flex justify-between">
+                <span className="text-[#828282] text-[14px] font-normal">Product</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.name || ""}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#828282] text-[14px] font-normal">Color</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.color || ""}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#828282] text-[14px] font-normal">Talle</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.size || ""}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#828282] text-[14px] font-normal">Cantidad</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.quantity || ""}</span>
+              </div>
               <div className="flex justify-between">
                 <span className="text-[#828282] text-[14px] font-normal">Status</span>
                 <span className="font-medium text-[#4F4F4F] text-[14px]">{order.status}</span>
@@ -100,13 +105,7 @@ const OrdersView = () => {
                   <Copy className="size-4 text-[#63C121]" />
                 </div>
               </div>
-              <Button
-                className="w-full mt-4 bg-[#24765D] text-white hover:bg-[#1c5a47]"
-                onClick={() => console.log('Ver Detalles', order._id)}
-              >
-                Ver Detalles
-                <Check className="ml-2 h-4 w-4" />
-              </Button>
+             
               <Separator />
             </div>
           ))

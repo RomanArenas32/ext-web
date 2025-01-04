@@ -1,4 +1,3 @@
-
 import { z } from 'zod'
 
 export const orderSchema = z.object({
@@ -29,13 +28,9 @@ export async function createOrder(values: any) {
         },
         body: JSON.stringify(values),
       })  
-      if (!response.ok) {
-        throw new Error(`Error creating order: ${response.status} ${response.statusText}`)
-      }
-  
       const responseData = await response.json()  
-      if (responseData.success) {
-        return { success: true, data: responseData.data }
+      if (responseData.ok) {
+        return { order: responseData.order, success: true }
       } else {
         return { success: false, error: responseData.error || 'Unknown error occurred' }
       }
@@ -44,4 +39,32 @@ export async function createOrder(values: any) {
       return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' }
     }
   }
+
   
+  export async function canceledOrder(id: string) {
+    console.log("Cancelling order with ID:", id)
+    try {
+      const response = await fetch(`https://ext-server.onrender.com/orders/canceled/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }), // Send as an object
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response}`)
+      }
+      
+      const responseData = await response.json()
+      console.log("Server response:", responseData)
+      
+      if (responseData.ok) {
+        return { order: responseData.order, success: true }
+      } else {
+        return { success: false, error: responseData.error || 'Unknown error occurred' }
+      }
+    } catch (error) {
+      console.error('Error in canceledOrder:', error)
+      return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' }
+    }
+  }
