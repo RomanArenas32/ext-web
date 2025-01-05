@@ -29,7 +29,6 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
   // Memoize the initial order data
   const initialOrder = useMemo(() => ({
     productId: productDetails._id,
-    code: new Date().getTime().toString(),
     status: 'pending',
     total: productDetails.totalPrice,
     name: productDetails.name,

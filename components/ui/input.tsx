@@ -23,7 +23,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-
       </div>
     )
   }
@@ -31,3 +30,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = "Input"
 
 export { Input }
+

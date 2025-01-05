@@ -1,26 +1,31 @@
 'use client'
 
-import { Separator } from "@/components/ui/separator"
-import { ChevronLeft } from 'lucide-react'
-import Link from "next/link"
 import ChatWithWarning from "@/components/chat/chatfinal"
+import { useParams } from "next/navigation"
+import { useCallback, useEffect, useState } from "react"
+import { Chat } from "@/interfaces/chat"
+import { getChatById } from "@/actions/chats"
 
 export default function ChatPage() {
-  return (
-    <div className="rounded-lg overflow-hidden shadow-lg">
-      <div className="bg-green-800 text-white p-6 flex items-center justify-between relative">
-        <Link href="/">
-          <ChevronLeft className="text-white w-6 h-6" />
-        </Link>
-        <h1 className="text-lg font-bold">Chats</h1>
-      </div>
+  const params = useParams();
+  const _id = params.id as string;
+  const [chat, setChat] = useState<Chat>();
 
-      <Separator />
-      
-      <div className="p-4 pt-20">
-        <ChatWithWarning />
-      </div>
-    </div>
+  const fetchChats = useCallback(async () => {
+    try {
+      const response = await getChatById(_id);
+      setChat(response.chat);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [_id]);
+
+  useEffect(() => {
+    fetchChats();
+  }, [fetchChats]);
+
+  return (
+    <ChatWithWarning chat={chat} fetchChats={fetchChats} />
   )
 }
 
