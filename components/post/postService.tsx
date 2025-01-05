@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createService } from '@/actions/services'
+import { useUser } from '@/context/userContext'
 
 
 const serviceSchema = z.object({
@@ -19,11 +20,12 @@ const serviceSchema = z.object({
   price: z.number().positive("El precio debe ser positivo"),
   category: z.string().min(1, "La categoría es requerida"),
   description: z.string().min(1, "La descripción es requerida"),
+  seller: z.string().min(1, "El vendedor es requerido")
 })
 
 type ServiceFormValues = z.infer<typeof serviceSchema>
 
-export default function ServicePost() {
+export default function ServicePost({user}: any) {
 
   const router = useRouter()
 
@@ -35,9 +37,11 @@ export default function ServicePost() {
       price: 0,
       category: '',
       description: '',
+      seller: user?.marketName || "",
     },
   })
   async function onSubmit(values: ServiceFormValues) {
+    console.log("Values", values);
     try {
 
       const response = await createService(values);

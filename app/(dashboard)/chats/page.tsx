@@ -1,6 +1,7 @@
 import React from 'react';
 import { Search, CheckCircle, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Input } from '@/components/ui/input';
 
 export default function Page() {
     const chats = [
@@ -54,16 +55,13 @@ export default function Page() {
                 </div>
 
             </header>
-            <div className="max-w-md mx-auto h-[450px] p-4 bg-white rounded-lg shadow-md">
+            <div className="max-w-md mx-auto h-[450px] p-4 bg-white rounded-lg">
 
-                <div className="relative mb-6">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="w-full px-4 py-2 border rounded-full text-sm focus:outline-none focus:ring focus:ring-green-500"
-                    />
-                    <Search className="absolute top-1/2 right-4 -translate-y-1/2 text-gray-400 w-5 h-5" />
-                </div>
+                <Input
+                    icon={<Search className='items-center' />}
+                    className='h-[40px] tex-[14px]'
+                    placeholder='Buscar chats'
+                />
 
                 {/* Chat Items */}
                 <div className="space-y-4">
@@ -84,14 +82,14 @@ export default function Page() {
                                 </div>
                                 <div>
                                     <Link href={`/chats/box`}>
-                                    <div className="flex items-center gap-1">
-                                        <h3 className="text-sm font-medium">{chat.name}</h3>
-                                        {chat.verified && (
-                                            <CheckCircle className="w-4 h-4 text-green-500" />
-                                        )}
-                                    </div>
+                                        <div className="flex items-center gap-1">
+                                            <h3 className="text-sm font-medium">{chat.name}</h3>
+                                            {chat.verified && (
+                                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                            )}
+                                        </div>
                                     </Link>
-                                    
+
                                     <p className="text-xs text-gray-500 truncate">{chat.message}</p>
                                 </div>
                             </div>

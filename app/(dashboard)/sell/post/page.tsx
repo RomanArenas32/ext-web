@@ -19,7 +19,7 @@ export default function Page() {
                 <RoleSwitch tab={tab} onRoleChange={setTab} />
             </div>
 
-            {tab === "product" ? <ProductPost /> : <ServicePost />}
+            {tab === "product" ? <ProductPost user={user}/> : <ServicePost user={user}/>}
         </div>
     );
 }

@@ -168,6 +168,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
       >
         <Confirmation
           productDetails={{
+            marketName: product.seller,
             _id: product._id,
             name: product.name,
             color: selectedColor,

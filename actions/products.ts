@@ -1,4 +1,5 @@
 
+const adminApiUrl = process.env.ADMIN_API_URL;
 
 import { z } from 'zod'
 

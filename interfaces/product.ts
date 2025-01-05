@@ -7,4 +7,5 @@ export interface Product {
     name: string
     price: number
     unities: number
+    seller: string
   }

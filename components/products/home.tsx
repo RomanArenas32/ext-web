@@ -68,11 +68,11 @@ export default function ProductCategories() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const reponse = await getProducts()
-        setProducts(reponse.products)
+        const response = await getProducts()
+        console.log(response)
+        setProducts(response.products)
       } catch (error) {
         console.log('Error obtaining products')
-
       }
     }
     fetchProducts()

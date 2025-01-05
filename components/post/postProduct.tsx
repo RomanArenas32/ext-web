@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import { z } from 'zod'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createProduct } from '@/actions/products'
 import { TermsDrawer } from '@/components/sell/terms-drawer'
+import { useUser } from '@/context/userContext'
 
 
 const productSchema = z.object({
@@ -23,11 +24,12 @@ const productSchema = z.object({
   description: z.string().min(1, "La descripción es requerida"),
   unities: z.number().int().positive("Las unidades deben ser un número positivo"),
   color: z.string().min(1, "El color es requerido"),
+  seller: z.string().min(1, "El vendedor es requerido")
 })
 
 type ProductFormValues = z.infer<typeof productSchema>
 
-export default function ProductPost() {
+export default function ProductPost({user}: any) {
   const router = useRouter()
   const [showForm, setShowForm] = useState(false)
   const [showDrawer, setShowDrawer] = useState(true)
@@ -42,6 +44,7 @@ export default function ProductPost() {
       description: '',
       unities: 0,
       color: '',
+      seller: user?.marketName || "",
     },
   })
 

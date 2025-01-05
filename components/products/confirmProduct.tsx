@@ -9,6 +9,7 @@ import { Header } from '../common/header'
 import { useEffect, useState, useMemo } from 'react'
 import { canceledOrder, createOrder } from '@/actions/orders'
 import { AlertMessage } from '../ui/alert'
+import { useUser } from '@/context/userContext'
 
 interface ConfirmationProps {
   productDetails: {
@@ -18,6 +19,7 @@ interface ConfirmationProps {
     quantity: number
     totalPrice: number
     name: string
+    marketName: string
   }
 }
 
@@ -34,6 +36,7 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
     color: productDetails.color,
     size: productDetails.size,
     quantity: productDetails.quantity,
+    seller: productDetails?.marketName,
   }), [productDetails])
 
   useEffect(() => {
