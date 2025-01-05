@@ -21,7 +21,7 @@ console.log(order)
       if (chat && chat.code) {
         try {
           const response = await getOrderBycode(chat.code);
-          setOrder(response);
+          setOrder(response.order);
         } catch (error) {
           console.error('Error fetching order:', error);
           toast.error('Failed to fetch order details');

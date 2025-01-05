@@ -83,7 +83,7 @@ export async function createOrder(values: any) {
   }
 
   export async function confirmOrder(id: string) {
-    console.log("Cancelling order with ID:", id)
+    console.log("Approved order with ID:", id)
     try {
       const response = await fetch(`https://ext-server.onrender.com/orders/confirm/${id}`, {
         method: 'PATCH',
@@ -105,7 +105,7 @@ export async function createOrder(values: any) {
         return { success: false, error: responseData.error || 'Unknown error occurred' }
       }
     } catch (error) {
-      console.error('Error in canceledOrder:', error)
+      console.error('Error in confirm Order:', error)
       return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' }
     }
   }
