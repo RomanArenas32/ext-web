@@ -11,20 +11,17 @@ export async function getChats() {
     }
 }
 
-export async function createChat() {
+export async function createChat({code, seller}: {code: string, seller: string}) {
     try {
         const response = await fetch('https://ext-server.onrender.com/chats', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({code, seller}),
         })
         const responseData = await response.json()
-        if (responseData.ok) {
-            return { order: responseData.order, success: true }
-        } else {
-            return { success: false, error: responseData.error || 'Unknown error occurred' }
-        }
+        return responseData
     } catch (error) {
         console.error('Error in create chat:', error)
         return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' }
@@ -51,6 +48,7 @@ export async function getChatById(_id: string) {
         throw new Error('Error al obtener el chat');
     }
 }
+
 
 export async function sendMessage({id, content}: {id: string, content: string}) {
     try {

@@ -20,6 +20,18 @@ export async function getOrders() {
   }
 }
 
+export async function getOrderBycode(code: string) {
+  try {
+    const response = await fetch(`https://ext-server.onrender.com/orders/${code}`, {
+      method: "GET",
+    });
+    const body = (await response.json()) as any;
+    return body;
+  } catch (error) {
+    throw new Error('Error obtaining order');
+  }
+}
+
 export async function createOrder(values: any) {  
     try {
       const response = await fetch('https://ext-server.onrender.com/orders', {
@@ -46,6 +58,34 @@ export async function createOrder(values: any) {
     console.log("Cancelling order with ID:", id)
     try {
       const response = await fetch(`https://ext-server.onrender.com/orders/canceled/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }), // Send as an object
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response}`)
+      }
+      
+      const responseData = await response.json()
+      console.log("Server response:", responseData)
+      
+      if (responseData.ok) {
+        return { order: responseData.order, success: true }
+      } else {
+        return { success: false, error: responseData.error || 'Unknown error occurred' }
+      }
+    } catch (error) {
+      console.error('Error in canceledOrder:', error)
+      return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' }
+    }
+  }
+
+  export async function confirmOrder(id: string) {
+    console.log("Cancelling order with ID:", id)
+    try {
+      const response = await fetch(`https://ext-server.onrender.com/orders/confirm/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

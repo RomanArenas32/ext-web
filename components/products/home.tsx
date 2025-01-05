@@ -64,19 +64,43 @@ const categories = [
 ]
 
 export default function ProductCategories() {
-  const [products, setProducts] = useState([])
+  const [allProducts, setAllProducts] = useState<Product[]>([])
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
+  const [searchTerm, setSearchTerm] = useState('')
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await getProducts()
-        console.log(response)
-        setProducts(response.products)
+        setAllProducts(response.products)
+        setFilteredProducts(response.products)
       } catch (error) {
         console.log('Error obtaining products')
       }
     }
     fetchProducts()
   }, [])
+
+  useEffect(() => {
+    const filtered = allProducts.filter(product =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setFilteredProducts(filtered)
+  }, [searchTerm, allProducts])
+
+  interface Product {
+    id: number;
+    name: string;
+    img: string;
+  }
+
+  interface ProductsResponse {
+    products: Product[];
+  }
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearchTerm(e.target.value)
+  }
 
   return (
     <>
@@ -108,20 +132,18 @@ export default function ProductCategories() {
           <CarouselNext className="right-2" />
         </Carousel>
         <div className="w-full items-center justify-center flex">
-          {/* Contenedor del input */}
           <Input
             placeholder="ej: Polos de algodón"
             className="w-[327px] h-10"
             icon={<Search size={16} />}
+            value={searchTerm}
+            onChange={handleSearch}
           />
         </div>
       </div>
 
-
-
-      <ProductList products={products} />
+      <ProductList products={filteredProducts} />
     </>
-
   )
 }
 

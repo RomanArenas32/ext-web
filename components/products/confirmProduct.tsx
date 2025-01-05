@@ -10,6 +10,7 @@ import { useEffect, useState, useMemo } from 'react'
 import { canceledOrder, createOrder } from '@/actions/orders'
 import { AlertMessage } from '../ui/alert'
 import { useUser } from '@/context/userContext'
+import { createChat } from '@/actions/chats'
 
 interface ConfirmationProps {
   productDetails: {
@@ -26,7 +27,7 @@ interface ConfirmationProps {
 export function Confirmation({ productDetails }: ConfirmationProps) {
   const [orderStatus, setOrderStatus] = useState<'loading' | 'success' | 'error'>('loading')
   const [order, setOrder] = useState<any>(null)
-  // Memoize the initial order data
+  const [chat, setChat] = useState<any>(null)
   const initialOrder = useMemo(() => ({
     productId: productDetails._id,
     status: 'pending',
@@ -45,18 +46,22 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
         if (result.success) {
           setOrder(result.order)
           setOrderStatus('success')
+          const response = await createChat({ code: result.order.code, seller: result.order.seller })
+          setChat(response.chat)
           return;
         } else {
           return;
         }
+
       } catch (error) {
         console.error('Error generating order:', error)
         setOrderStatus('error')
       }
     }
     generateOrder()
-  }, [])
 
+  }, [])
+  console.log(chat)
   const canceled = async () => {
     const id = order._id
     try {
@@ -115,13 +120,21 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
 
             {/* Botón de chat */}
             <div className="relative ml-auto">
-              <Link href={"/chat"}>
-                <button className="flex items-center bg-green-700 text-white px-4 py-2 font-medium rounded-full text-sm hover:bg-green-800">
+              {chat !== null ? (
+
+                <Link href={`/chats/${chat._id}`}>
+                  <button className="flex items-center bg-green-700 text-white px-4 py-2 font-medium rounded-full text-sm hover:bg-green-800">
+                    Chat
+                    <MessageSquareMore className="w-4 h-4 ml-2" />
+                  </button>
+                </Link>)
+                :
+                <button className="flex items-center bg-gray-400 text-white px-4 py-2 font-medium rounded-full text-sm disabled:cursor-not-allowed">
                   Chat
                   <MessageSquareMore className="w-4 h-4 ml-2" />
                 </button>
-              </Link>
-              {/* Indicador de notificaciones */}
+              }
+
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
                 1
               </span>

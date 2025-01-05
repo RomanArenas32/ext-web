@@ -1,15 +1,14 @@
 'use client'
 
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Separator } from "../ui/separator"
-import { Product } from "@/interfaces/product"
 
 
 
-export default function ProductList({ products }: { products: Product[] }) {
+export default function ProductList({ products }: { products: any[] }) {
+  console.log(products)
   return (
     <div className="w-full max-w-3xl mx-auto space-y-4 p-2">
       {products.map((product, index) => (

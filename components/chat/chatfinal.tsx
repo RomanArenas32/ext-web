@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { ChevronLeft, Paperclip, Send } from 'lucide-react';
 import Image from "next/image";
 import Link from "next/link";
@@ -7,9 +8,28 @@ import { format } from 'date-fns';
 import ErrorBoundary from "./ErrorBoundary";
 import ErrorScreen from "./ErrorScreen";
 import { sendMessage } from "@/actions/chats";
+import { getOrderBycode, confirmOrder } from "@/actions/orders";
+import { toast } from "sonner";
+import { Order } from "@/interfaces/orders";
 
-export default function Chatfin({ chat, fetchChats }: { chat: any, fetchChats: ()=>void }) {
+export default function Chatfin({ chat, fetchChats }: { chat: any, fetchChats: () => void }) {
   const [newMessage, setNewMessage] = useState("");
+  const [order, setOrder] = useState<Order | null>(null);
+console.log(order)
+  useEffect(() => {
+    const fetchOrder = async () => {
+      if (chat && chat.code) {
+        try {
+          const response = await getOrderBycode(chat.code);
+          setOrder(response);
+        } catch (error) {
+          console.error('Error fetching order:', error);
+          toast.error('Failed to fetch order details');
+        }
+      }
+    };
+    fetchOrder();
+  }, [chat]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,6 +40,22 @@ export default function Chatfin({ chat, fetchChats }: { chat: any, fetchChats: (
       setNewMessage("");
     } catch (error) {
       console.error('Error in send message:', error);
+      toast.error('Failed to send message');
+    }
+  };
+
+  const handleConfirmOrder = async () => {
+    if (order) {
+      try {
+        const response = await confirmOrder(order._id);
+        console.log(response);
+        toast.success('Order confirmed successfully');
+      } catch (error) {
+        console.error('Error in confirm order:', error);
+        toast.error('Failed to confirm order');
+      }
+    } else {
+      toast.error('Order details not available');
     }
   };
 
@@ -72,7 +108,7 @@ export default function Chatfin({ chat, fetchChats }: { chat: any, fetchChats: (
           <span className="text-gray-600 text-[12px]">Pago pendiente</span>
           <span className="text-orange-400 text-[12px]">05:16:04</span>
           <div className="text-gray-200 text-[12px] p-2 px-4 rounded-3xl border-gray-300 ml-auto bg-green-900">
-            <button>Producto recibido</button>
+            <button onClick={handleConfirmOrder}>Producto recibido</button>
           </div>
         </div>
 
