@@ -100,7 +100,7 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
             <div className="ml-4 flex flex-col">
               <div className="flex items-center">
                 <h1 className="text-lg font-semibold text-gray-800">KellyFashion</h1>
-                <Image
+                <img
                   src="/icon/check.svg"
                   alt="green check"
                   width={18}
@@ -129,7 +129,7 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
           <div className="px-6 py-4">
             <div className="flex items-start justify-between">
               <h2 className="text-[16px] font-semibold text-red-500">{order.name}</h2>
-              <Image
+              <img
                 src="/img/poloama.jpg"
                 alt="T-Shirt"
                 width={24}

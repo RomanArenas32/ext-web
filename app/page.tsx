@@ -34,7 +34,7 @@ export default function Page() {
         <Section title="Wallet">
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/deposit.svg"
                 width={34}
                 height={34}
@@ -45,7 +45,7 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/withdraw.svg"
                 width={34}
                 height={34}
@@ -56,7 +56,7 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/transfer.svg"
                 width={34}
                 height={34}
@@ -67,7 +67,7 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/history.svg"
                 width={34}
                 height={34}
@@ -78,7 +78,7 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/buycripto.svg"
                 width={34}
                 height={34}
@@ -89,13 +89,13 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image src="/icon/swap.svg" width={34} height={34} alt="swap" />
+              <img src="/icon/swap.svg" width={34} height={34} alt="swap" />
             }
             label="Swap"
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/trading.svg"
                 width={34}
                 height={34}
@@ -108,7 +108,7 @@ export default function Page() {
           <Link href="/products">
             <Item
               icon={
-                <Image
+                <img
                   src="/icon/emprendeya.svg"
                   width={34}
                   height={34}
@@ -122,7 +122,7 @@ export default function Page() {
         <Section title="Wanya">
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/aboutus.svg"
                 width={34}
                 height={34}
@@ -133,7 +133,7 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/social.svg"
                 width={34}
                 height={34}
@@ -144,13 +144,13 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image src="/icon/legal.svg" width={34} height={34} alt="legal" />
+              <img src="/icon/legal.svg" width={34} height={34} alt="legal" />
             }
             label="Legal"
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/referral.svg"
                 width={34}
                 height={34}
@@ -163,7 +163,7 @@ export default function Page() {
         <Section title="More">
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/support.svg"
                 width={34}
                 height={34}
@@ -174,7 +174,7 @@ export default function Page() {
           />
           <Item
             icon={
-              <Image
+              <img
                 src="/icon/feedback.svg"
                 width={34}
                 height={34}

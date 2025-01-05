@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import {  Copy } from 'lucide-react';
+import { Copy } from 'lucide-react';
 import { getOrders } from '@/actions/orders';
 import { Separator } from '../ui/separator';
 import { Order } from '@/interfaces/orders';
-
 
 const OrdersView = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -36,16 +35,26 @@ const OrdersView = () => {
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
+
+  const filteredOrders = activeTab === 'all'
+    ? orders
+    : orders.filter(order => {
+        if (activeTab === 'completed') return order.status === 'confirm';
+        if (activeTab === 'cancelled') return order.status === 'canceled';
+        return order.status === 'pending';
+      });
+
   if (isLoading) {
-    return <div className='min-h-[100vh] w-full grid place-items-center'>Loading orders...</div>;
+    return <div className="min-h-[100vh] w-full grid place-items-center">Loading orders...</div>;
   }
 
   if (error) {
-    return <div className='min-h-[100vh] w-full grid place-items-center'>Error: {error}</div>;
+    return <div className="min-h-[100vh] w-full grid place-items-center">Error: {error}</div>;
   }
 
   return (
     <div>
+      {/* Tabs */}
       <div className="flex flex-row justify-center gap-4 py-4 px-6">
         <button
           onClick={() => handleTabChange('all')}
@@ -69,26 +78,26 @@ const OrdersView = () => {
 
       {/* Order Details */}
       <div className="py-4 px-6 flex flex-col gap-4 mb-32">
-        {orders.length === 0 ? (
-          <div className='text-center'>No orders found</div>
+        {filteredOrders.length === 0 ? (
+          <div className="text-center">No orders found</div>
         ) : (
-          orders.map((order) => (
+          filteredOrders.map(order => (
             <div key={order._id} className="p-4 flex flex-col gap-2">
               <div className="flex justify-between">
                 <span className="text-[#828282] text-[14px] font-normal">Product</span>
-                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.name || ""}</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.name || ''}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#828282] text-[14px] font-normal">Color</span>
-                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.color || ""}</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.color || ''}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#828282] text-[14px] font-normal">Talle</span>
-                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.size || ""}</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.size || ''}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#828282] text-[14px] font-normal">Cantidad</span>
-                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.quantity || ""}</span>
+                <span className="font-medium text-[#4F4F4F] text-[14px]">{order.quantity || ''}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#828282] text-[14px] font-normal">Status</span>
@@ -105,18 +114,17 @@ const OrdersView = () => {
                   <Copy className="size-4 text-[#63C121]" />
                 </div>
               </div>
-             
               <Separator />
             </div>
           ))
         )}
       </div>
-   
     </div>
   );
 };
 
 export default OrdersView;
+
 
 
 
