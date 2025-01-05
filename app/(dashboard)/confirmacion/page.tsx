@@ -1,7 +1,7 @@
 "use client"
 
 
-import Confirmation from "@/components/seller/confirmación"
+import Home from "@/components/seller/home"
 
 
 export default function Page() {
@@ -9,7 +9,7 @@ export default function Page() {
     return (
 
         <div>
-            <Confirmation />
+            <Home />
         </div>
     )
 }

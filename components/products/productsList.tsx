@@ -21,7 +21,7 @@ export default function ProductList({ products }: { products: Product[] }) {
               </div>
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-medium">KellyFashion</h1>
-                <Image
+                <img
                   src="/icon/check.svg"
                   alt="Verified seller"
                   width={16}
@@ -36,7 +36,7 @@ export default function ProductList({ products }: { products: Product[] }) {
             </div>
             <div className="flex gap-4">
               <div className="w-24 h-24">
-                <Image
+                <img
                   src={"/img/pologris.jpg"}
                   alt={product.name}
                   width={96}
