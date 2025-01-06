@@ -45,7 +45,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
   return (
     <div className="max-w-md bg-white min-h-screen mb-10">
       <Header
-        text="Producto"
+        text={`${product?.name || "Polo"}`}
         link="/products"
         button={{
           text: "Ver detalles",
