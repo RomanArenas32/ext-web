@@ -11,8 +11,10 @@ import { sendMessage } from "@/actions/chats";
 import { getOrderBycode, confirmOrder } from "@/actions/orders";
 import { toast } from "sonner";
 import { Order } from "@/interfaces/orders";
+import { useRouter } from "next/navigation";
 
 export default function Chatfin({ chat, fetchChats }: { chat: any, fetchChats: () => void }) {
+  const router = useRouter();
   const [newMessage, setNewMessage] = useState("");
   const [order, setOrder] = useState<Order | null>(null);
   useEffect(() => {
@@ -51,6 +53,9 @@ export default function Chatfin({ chat, fetchChats }: { chat: any, fetchChats: (
           return toast.error('Failed to confirm order');
         }
         toast.success('Order confirmed successfully');
+        setTimeout(() => {
+          router.push(`/orders/${order._id}`);
+        }, 1500);
       } catch (error) {
         console.error('Error in confirm order:', error);
         toast.error('Failed to confirm order');

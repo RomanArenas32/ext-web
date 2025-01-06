@@ -8,6 +8,7 @@ import { Separator } from '../ui/separator'
 import { Product } from '@/interfaces/product'
 import { QuantitySelector } from '../common/quantity-selection'
 import ProductDetail from './productDetail'
+import Image from 'next/image'
 
 interface ProductViewProps {
   product: Product;
@@ -66,9 +67,11 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
         <div className="space-y-4 flex items-center gap-4">
           <h3 className="text-base font-medium">Color</h3>
           <div className="flex gap-6">
-            <img
+            <Image
               src={colorImageMap[selectedColor]}
               alt={`Producto ${selectedColor}`}
+              width={112}
+              height={112}
               className="h-28 w-28 object-cover rounded-lg"
             />
             <div className="flex flex-row gap-3 items-center">

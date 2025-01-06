@@ -32,6 +32,19 @@ export async function getOrderBycode(code: string) {
   }
 }
 
+
+export async function getOrderById(id: string) {
+  try {
+    const response = await fetch(`https://ext-server.onrender.com/orders/one/${id}`, {
+      method: "GET",
+    });
+    const body = (await response.json()) as any;
+    return body;
+  } catch (error) {
+    throw new Error('Error obtaining order');
+  }
+}
+
 export async function createOrder(values: any) {  
     try {
       const response = await fetch('https://ext-server.onrender.com/orders', {

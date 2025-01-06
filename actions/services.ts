@@ -60,6 +60,6 @@ export async function getServiceById(_id: string) {
     return productData;
   } catch (error) {
     console.error('Error en la solicitud GET:', error);
-    throw new Error('Error al obtener el producto');
+    throw new Error('Error al obtener el servicio');
   }
 }

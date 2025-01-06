@@ -10,4 +10,5 @@ export interface Order {
   totalPrice: number;
   status: string;
   name: string;
+  total: number;
 }

@@ -22,7 +22,7 @@ export default function ServicesList({ services }: { services: Service[] }) {
                   <h1 className="text-[14px] pt-[2px]">{service.name}</h1>
                 </div>
               </div>
-              <img
+              <Image
                 src="/icon/check.svg"
                 alt="green check"
                 width={22}
@@ -69,7 +69,7 @@ export default function ServicesList({ services }: { services: Service[] }) {
 
             </div>
 
-            <Link href={`/products/${service._id}`}>
+            <Link href={`/services/${service._id}`}>
               <Button className="bg-[#16C784] w-[98px] h-[28px] rounded-3xl hover:bg-green-600 text-[14px] text-white flex justify-center">
                 Ver más
               </Button>

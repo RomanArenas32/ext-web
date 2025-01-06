@@ -3,13 +3,11 @@
 import { MessageSquareMore, ClipboardCheck, CircleAlert } from 'lucide-react'
 import Link from 'next/link'
 import { Separator } from '../ui/separator'
-import Image from 'next/image'
 import { Button } from '../ui/button'
 import { Header } from '../common/header'
 import { useEffect, useState, useMemo } from 'react'
 import { canceledOrder, createOrder } from '@/actions/orders'
 import { AlertMessage } from '../ui/alert'
-import { useUser } from '@/context/userContext'
 import { createChat } from '@/actions/chats'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
@@ -199,7 +197,7 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
         </div>
 
         {/* Buttons */}
-        <div className="py-4 flex flex-col gap-4 w-full justify-center items-center">
+        <div className="py-4 flex flex-col gap-4 w-full justify-center items-center h-full pb-[70px]">
           <Button
             variant="secondary"
             className="bg-[#E6E6E6] text-[#999999] text-[16px] py-3 px-4 rounded-3xl text-center font-bold cursor-not-allowed  h-[52px] w-[281px]"
