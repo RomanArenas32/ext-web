@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { Order } from "@/interfaces/orders";
 import { getOrderById } from "@/actions/orders";
+import { Header } from "@/components/common/header";
 
 export default function Page() {
 
@@ -32,13 +33,7 @@ export default function Page() {
   return (
     <div className="w-full max-w-md mx-auto bg-white min-h-screen p-6">
       {/* Back Button */}
-      <Link href={`/chats/box`}>
-        <button className="mb-8">
-          <ChevronLeft className="w-6 h-6 text-gray-700" />
-        </button>
-      </Link>
-
-
+      <Header link="/orders" /> 
       {/* Price and Status */}
       <div className="flex items-center justify-center">
         <Image

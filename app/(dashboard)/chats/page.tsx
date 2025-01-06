@@ -69,7 +69,7 @@ export default function Page() {
                         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
                     </div>
                 ) : filteredChats.length > 0 ? (
-                    <div className="space-y-4 mt-4">
+                    <div className="space-y-4 mt-4 h-[65vh] overflow-y-auto">
                         {filteredChats.map((chat, index) => (
                             <div
                                 key={index}

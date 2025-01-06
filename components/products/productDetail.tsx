@@ -85,10 +85,13 @@ const ProductDetail = ({ productDetails }: ProductDetailProps) => {
                     <p>{productDetails?.description}</p>
                 </div>
             </div>
-
-            <div className="w-full p-4 mb-6 flex justify-center">
+{/*
+  <div className="w-full p-4 mb-6 flex justify-center">
                 <AlertMessage text="Me interesa" />
             </div>
+
+*/}
+          
         </div>
     );
 };
