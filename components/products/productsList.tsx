@@ -8,9 +8,8 @@ import { Separator } from "../ui/separator"
 
 
 export default function ProductList({ products }: { products: any[] }) {
-  console.log(products)
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4 p-2">
+    <div className="w-full max-w-3xl mx-auto space-y-4 p-2 h-[50vh] overflow-y-auto">
       {products.map((product, index) => (
         <div key={index} className="overflow-hidden">
           <CardContent className="p-6">

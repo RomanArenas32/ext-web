@@ -11,6 +11,8 @@ import { canceledOrder, createOrder } from '@/actions/orders'
 import { AlertMessage } from '../ui/alert'
 import { useUser } from '@/context/userContext'
 import { createChat } from '@/actions/chats'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 interface ConfirmationProps {
   productDetails: {
@@ -25,6 +27,7 @@ interface ConfirmationProps {
 }
 
 export function Confirmation({ productDetails }: ConfirmationProps) {
+  const router = useRouter()
   const [orderStatus, setOrderStatus] = useState<'loading' | 'success' | 'error'>('loading')
   const [order, setOrder] = useState<any>(null)
   const [chat, setChat] = useState<any>(null)
@@ -67,10 +70,12 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
     try {
       const response = await canceledOrder(id)
       if (response.success) {
+        toast.success("Orden cancelada exitosamente")
         console.log("Order cancelled successfully")
+        router.push('/products')
       } else {
         console.error("Failed to cancel order:", response.error)
-      }
+      }   
     } catch (error) {
       console.error("Error cancelling order:", error)
     }

@@ -9,7 +9,7 @@ import { Separator } from "../ui/separator";
 
 export default function ServicesList({ services }: { services: Service[] }) {
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4 p-4">
+    <div className="w-full max-w-3xl mx-auto space-y-4 p-4 h-[50vh] overflow-y-auto">
       {services.map((service) => (
         <div key={service._id} className="overflow-hidden flex flex-col">
           <div className="flex flex-row justify-between items-center p-2">

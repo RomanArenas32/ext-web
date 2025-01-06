@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { use, useState } from 'react'
+import React, { useState } from 'react'
 import { z } from 'zod'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
@@ -13,7 +13,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createProduct } from '@/actions/products'
 import { TermsDrawer } from '@/components/sell/terms-drawer'
-import { useUser } from '@/context/userContext'
 
 
 const productSchema = z.object({

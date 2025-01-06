@@ -15,7 +15,6 @@ import { Order } from "@/interfaces/orders";
 export default function Chatfin({ chat, fetchChats }: { chat: any, fetchChats: () => void }) {
   const [newMessage, setNewMessage] = useState("");
   const [order, setOrder] = useState<Order | null>(null);
-console.log(order)
   useEffect(() => {
     const fetchOrder = async () => {
       if (chat && chat.code) {
@@ -48,7 +47,9 @@ console.log(order)
     if (order) {
       try {
         const response = await confirmOrder(order._id);
-        console.log(response);
+        if(!response.success){
+          return toast.error('Failed to confirm order');
+        }
         toast.success('Order confirmed successfully');
       } catch (error) {
         console.error('Error in confirm order:', error);
