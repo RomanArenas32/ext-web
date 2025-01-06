@@ -20,7 +20,6 @@ export default function Page() {
     const fetchProduct = async () => {
       try {
         const response = await getServiceById(_id);
-        console.log(response)
         setService(response.service);
       } catch (error) {
         console.log(error);

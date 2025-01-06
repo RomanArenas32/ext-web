@@ -44,14 +44,14 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
 
   return (
     <div className="max-w-md bg-white min-h-screen mb-10">
-     <Header 
-        text="Producto" 
-        link="/products" 
+      <Header
+        text="Producto"
+        link="/products"
         button={{
           text: "Ver detalles",
           className: " text-[#B0B0B0] border border-[#B0B0B0] rounded-3xl  bg-white",
           action: () => setIsModalOpenDetailProduct(true)
-        }} 
+        }}
       />
       <Separator />
 
@@ -134,7 +134,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 pb-[60px]">
           <p className="text-xs text-gray-500">
             By proceeding, you've read and agreed to the{' '}
             <a href="#" className="text-green-800 underline">
@@ -144,13 +144,13 @@ const ProductView: React.FC<ProductViewProps> = ({ product }: ProductViewProps) 
           </p>
           <div className='w-full flex justify-center'>
             <button
-            onClick={() => setIsModalOpenGetProduct(true)}
-            className="w-[280px] bg-[#1A4B3D] text-white rounded-full py-4 font-medium h-[52px] flex justify-center items-center"
-          >
-            Lo quiero ya!
-          </button>
+              onClick={() => setIsModalOpenGetProduct(true)}
+              className="w-[280px] bg-[#1A4B3D] text-white rounded-full py-4 font-medium h-[52px] flex justify-center items-center"
+            >
+              Lo quiero ya!
+            </button>
           </div>
-          
+
         </div>
       </div>
 

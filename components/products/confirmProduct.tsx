@@ -69,7 +69,6 @@ export function Confirmation({ productDetails }: ConfirmationProps) {
       const response = await canceledOrder(id)
       if (response.success) {
         toast.success("Orden cancelada exitosamente")
-        console.log("Order cancelled successfully")
         router.push('/products')
       } else {
         console.error("Failed to cancel order:", response.error)
