@@ -12,7 +12,7 @@ export default function NavigationFooter() {
           href="/products"
           className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <img
+          <Image
             src="/icon/comprar.svg"
             alt="comprar icon"
             width={24}
@@ -24,7 +24,7 @@ export default function NavigationFooter() {
           href="/sell"
           className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <img
+          <Image
             src="/icon/vender.svg"
             alt="vender icon"
             width={24}
@@ -37,7 +37,7 @@ export default function NavigationFooter() {
           href="/orders"
           className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <img
+          <Image
             src="/icon/ordenes.svg"
             alt="ordenes icon"
             width={24}
@@ -49,7 +49,7 @@ export default function NavigationFooter() {
           href="/chats"
           className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <img
+          <Image
             src="/icon/chats.svg"
             alt="chats icon"
             width={24}

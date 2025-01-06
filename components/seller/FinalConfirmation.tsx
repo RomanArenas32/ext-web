@@ -59,7 +59,7 @@ export default function FinalConfirmation() {
           </p>
           <p className="text-lg font-bold text-gray-900">Total: S/ 190.00</p>
         </div>
-        <img
+        <Image
           src="/img/camisero.jpg"
           alt="T-Shirt"
           className="w-24 h-24 object-cover"

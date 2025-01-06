@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronLeft, MessageSquareMore, AlertTriangle, ClipboardCheck } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 export default function Confirmation() {
   return (
@@ -56,9 +57,11 @@ export default function Confirmation() {
               </p>
               <p className="text-lg font-bold text-gray-900">Total: S/ 190.00</p>
             </div>
-            <img
+            <Image
               src="/img/camisero.jpg"
               alt="T-Shirt"
+              width={96}
+              height={96}
               className="w-24 h-24 object-cover"
             />
           </div>

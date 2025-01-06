@@ -22,7 +22,7 @@ const ProductDetail = ({ productDetails }: ProductDetailProps) => {
             <div className="flex-grow bg-white rounded-lg p-6 w-full max-w-lg mx-auto">
 
                 <div className="relative flex">
-                    <img
+                    <Image
                         src="/img/pologris.jpg"
                         alt="Polo gris"
                         width={343}
@@ -30,7 +30,7 @@ const ProductDetail = ({ productDetails }: ProductDetailProps) => {
                         className="h-[343px] w-full object-contain"
                     />
                 </div>
-                <img
+                <Image
                     src="/img/detalle/flechas.svg"
                     alt="arrows"
                     width={40}
@@ -39,28 +39,28 @@ const ProductDetail = ({ productDetails }: ProductDetailProps) => {
                 />
 
                 <div className="flex justify-center gap-4 mt-4 h-[78px]">
-                    <img
+                    <Image
                         src="/img/detalle/vista1.jpg"
                         alt="Vista 1"
                         width={78}
                         height={78}
                         className="h-20 w-20 object-cover rounded-md cursor-pointer border border-gray-300 hover:border-gray-500"
                     />
-                    <img
+                    <Image
                         src="/img/detalle/vista2.jpg"
                         alt="Vista 2"
                         width={78}
                         height={78}
                         className="h-20 w-20 object-cover rounded-md cursor-pointer border border-gray-300 hover:border-gray-500"
                     />
-                    <img
+                    <Image
                         src="/img/detalle/vista3.jpg"
                         alt="Vista 3"
                         width={78}
                         height={78}
                         className="h-20 w-20 object-cover rounded-md cursor-pointer border border-gray-300 hover:border-gray-500"
                     />
-                    <img
+                    <Image
                         src="/img/detalle/vista4.jpg"
                         alt="Vista 360"
                         width={78}

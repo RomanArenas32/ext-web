@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Separator } from "../ui/separator"
+import Image from "next/image"
 
 
 
@@ -19,7 +20,7 @@ export default function ProductList({ products }: { products: any[] }) {
               </div>
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-medium">KellyFashion</h1>
-                <img
+                <Image
                   src="/icon/check.svg"
                   alt="Verified seller"
                   width={16}
@@ -34,7 +35,7 @@ export default function ProductList({ products }: { products: any[] }) {
             </div>
             <div className="flex gap-4">
               <div className="w-24 h-24">
-                <img
+                <Image
                   src={"/img/pologris.jpg"}
                   alt={product.name}
                   width={96}

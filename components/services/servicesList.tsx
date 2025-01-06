@@ -43,7 +43,7 @@ export default function ServicesList({ services }: { services: Service[] }) {
 
           <div className="flex flex-row justify-between items-center gap-3 p-2">
             <div className="flex-shrink-0">
-              <img
+              <Image
                 src="/icon/camion1.svg"
                 alt="camion image"
                 width={100}

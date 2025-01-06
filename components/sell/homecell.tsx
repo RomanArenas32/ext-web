@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle, Mail, Smartphone, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const UserProfile = () => {
   const products = [
@@ -51,9 +52,11 @@ const UserProfile = () => {
         <div className="grid grid-cols-2 gap-4">
           {products.map((product, index) => (
             <div key={index} className="border rounded-lg p-2">
-              <img
+              <Image
                 src={product.image}
                 alt={`Product ${index + 1}`}
+                width={200}
+                height={200}
                 className="h-24 w-full object-cover rounded-lg mb-2"
               />
               <div className="text-center">
