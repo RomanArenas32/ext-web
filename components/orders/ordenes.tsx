@@ -126,31 +126,3 @@ const OrdersView = () => {
 export default OrdersView;
 
 
-
-
-
-
-   {/*
-          
-          <div className="flex justify-between">
-            <span className="text-[#828282] text-[14px] font-normal">Total</span>
-            <span className="font-bold text-[16px] text-[#12332A]">S/ {order.totalPrice.toFixed(2)}</span>
-          </div>
-
-          <div className="flex justify-between">
-            <span className="text-[#828282] text-[14px] font-normal">Producto</span>
-            <span className="font-medium text-[#4F4F4F] text-[14px]">{order.product}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-[#828282] text-[14px] font-normal">Color</span>
-            <span className="font-medium text-[#4F4F4F] text-[14px]">{order.color}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-[#828282] text-[14px] font-normal">Talla</span>
-            <span className="font-medium text-[#4F4F4F] text-[14px]">{order.size}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-[#828282] text-[14px] font-normal">Cantidad</span>
-            <span className="font-medium text-[#4F4F4F] text-[14px]">{order.quantity}</span>
-          </div>
-          */}
